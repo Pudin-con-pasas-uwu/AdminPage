@@ -1,3 +1,12 @@
 #PaddingTopTable{
     margin-top: 1rem;
+    margin-left: 1rem;
+}
+#bottomSpace{
+    width: 82px;
+    border-radius: 0%;
+}
+#buttonadd{
+    width: 81.1%;
+    border-radius: 0%;
 }
