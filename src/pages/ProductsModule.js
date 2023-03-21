@@ -1,7 +1,6 @@
 import React from 'react';
 import Layout from '@/components/Layouts/Layout'
 import ProductsTable from '@/components/ProductsModule/ProductsTable';
-import SearchBar from '@/components/ProductsModule/SearchBarProductos';
 import fetch from 'isomorphic-fetch'
 import { useRouter } from 'next/router';
 
@@ -20,7 +19,6 @@ const ProductsModule = (props) =>{
 
   return (
     <Layout>
-        <SearchBar/>
         <ProductsTable users={props.users} />
     </Layout>
   )
@@ -37,5 +35,7 @@ ProductsModule.getInitialProps = async (ctx) =>{
     return {users: null };
   }
   };
+
+  
 
 export default ProductsModule;
