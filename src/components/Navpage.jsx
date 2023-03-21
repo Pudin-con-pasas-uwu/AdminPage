@@ -12,9 +12,9 @@ const Navpage = () => {
     <Link href="/" className="logonav">inicio</Link>
   
   <input className="menu-btn" type="checkbox" id="menu-btn" />
-  <label className="menu-icon" for="menu-btn"><span className="navicon"></span></label>
-  <ul class="menu">
-    <li><Link href="/" className="mt-4">orders</Link></li> 
+  <label className="menu-icon" htmlFor="menu-btn"><span className="navicon"></span></label>
+  <ul className="menu">
+    <li><Link href="/orders" className="mt-4">orders</Link></li> 
     <li><Link href="/" className="mt-4">rols</Link></li>
     <li><Link href="/" className="mt-4">categories</Link></li>
     <li><Link href="/" className="mt-4">products</Link></li>
