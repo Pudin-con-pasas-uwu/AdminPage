@@ -10,13 +10,6 @@ const ProductsTable = (props) => {
     <table className="table table-dark table-striped-columns" id={styles.PaddingTopTable} >
         <thead>
             <tr>
-                <th></th>
-                <th>busqueda</th>
-                <th>filtro</th>
-                <th>filtro</th>
-                <th>busqueda</th>
-            </tr>
-            <tr>
                 <th>#</th>
                 <th>product name</th>
                 <th>price</th>
