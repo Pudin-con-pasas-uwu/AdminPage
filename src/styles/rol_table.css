@@ -1,0 +1,23 @@
+#tabla_roles {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    overflow-x: auto;
+  }
+
+/* table title css styles */
+#titulo_roles{
+    text-align: center;
+}
+#ordenamiento{
+    background-color: white;
+    color: black;
+    
+}
+#filternsearch{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+#sizer{
+ max-width: 66px;
+}
