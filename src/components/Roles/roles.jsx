@@ -55,40 +55,42 @@ const Roles = (props) => {
 
   return (
     <main>
-      <div className="container" id='filternsearch'>
-      <div class="row justify">
-    <div class="col-lg-8">
-      {/* aqui esta el select para ordenar, y en el select se llama a llamar las variables de estado (en este caso el de ordenar) */}
-      {/* y se manda a llamar el handlesortchange para que detecte el cambio como un evento y lo tome como un argumento para ordenar la tabla */}
-    <select value={sortOrder} onChange={handleSortChange} id='ordenamiento'>
-          <option value="">Ordenar por:</option>
-          <option value="ascName">A-Z</option> {/* aqui va lo de case, dentro de value, para que sepa que funcion se hace y el handle sort  haga su trabajo*/}
-          <option value="descName">Z-A</option>
-          <option value="ascDate">Nuevo a Viejo</option>
-          <option value="descDate">Viejo a nuevo</option>
-        </select>
-    </div>
-
-    <div class="col-lg-4">
-{/* lo mismo que arriba pero con un searchbar*/}
-    <form onSubmit={(event) => event.preventDefault()} >
-          <input id='ordenamiento'
-            type="text"
-            value={searchQuery}
-            onChange={handleSearchQueryChange}
-            placeholder="Buscar..."
-          />
-      </form>
-    </div>
-
-
-  </div>
-      </div>
-      <div className="container">
-      <button type="button" class="btn btn-primary">Agregar</button>
-      </div>
       <div className="container" id='tabla_roles'>
-        <table className="table table-light table-striped-columns" >
+        <table className="table table-striped table-hover table-responsive" >
+        <thead>
+            <tr>
+              <th></th>
+
+              {/* buscador */}
+              <th colspan="2"> 
+              <form onSubmit={(event) => event.preventDefault()} >
+                <input id='ordenamiento' class="form-control me-2" type="search"
+                  value={searchQuery}
+                  onChange={handleSearchQueryChange}
+                  placeholder="Buscar..."
+                 />
+                </form>
+
+              </th>
+              <th>
+
+                {/* ordenadores */}
+              <select value={sortOrder} onChange={handleSortChange} id='ordenamiento' class="form-select">
+                <option value="">Ordenar por:</option>
+                <option value="ascName">A-Z</option> {/* aqui va lo de case, dentro de value, para que sepa que funcion se hace y el handle sort  haga su trabajo*/}
+                <option value="descName">Z-A</option>
+                <option value="ascDate">Recientes</option>
+                <option value="descDate">Antiguo</option>
+              </select>
+              </th>
+              <th></th>
+              <th></th>
+              <th></th>
+              {/* el boton de agregar */}
+              <th><button type="button" class="btn btn-dark" id='boton_agregar'>Agregar</button></th>
+            </tr>
+          </thead>
+
           <thead>
             <tr className='text-center'>
               <th>ID</th>
@@ -105,18 +107,18 @@ const Roles = (props) => {
             {Array.isArray(props.Roles.rows) && props.Roles.rows.length > 0 ? (
               sortedRows().map((rol) => (
                 <tr key={rol.id}>
-                  <th>{rol.id}</th>
-                  <th>{rol.name}</th>
-                  <th>{rol.username}</th>
-                  <th>{rol.email}</th>
-                  <th>{rol.phone_number}</th>
-                  <th>
+                  <th className='text-center'>{rol.id}</th>
+                  <th className='text-center'>{rol.name}</th>
+                  <th className='text-center'>{rol.username}</th>
+                  <th className='text-center'>{rol.email}</th>
+                  <th className='text-center'>{rol.phone_number}</th>
+                  <th className='text-center'>
                     {rol.role_id.toString() === '1' ? 'Administrador' : 
                      rol.role_id.toString() === '2' ? 'Usuario' : 
                      rol.role_id.toString() === '3' ? 'Cliente' : ''}
                   </th>
-                  <th>{rol.creation_date}</th>
-                  <th><button type="button" class="btn btn-dark">Editar</button> <button type="button" class="btn btn-danger">Eliminar</button> </th>
+                  <th className='text-center'>{rol.creation_date}</th>
+                  <th><button type="button" class="btn btn-dark bordered">Editar</button> <button type="button" class="btn btn-danger bordered">Eliminar</button> </th>
                 </tr>
               ))
             ) : null}

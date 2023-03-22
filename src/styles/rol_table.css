@@ -19,5 +19,12 @@
     margin-bottom: 20px;
 }
 #sizer{
- max-width: 66px;
+ width: 66px;
+}
+.bordered{
+    border-radius: 0px;
+}
+#boton_agregar{
+    width: 174px;
+    border-radius: 0px;
 }

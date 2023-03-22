@@ -46,34 +46,38 @@ const Categories = (props) => {
 
   return (
     <main>
-      <div className="container" id='filternsearch'>
-      <div class="row justify">
-    <div class="col-lg-8">
-    <select value={sortOrder} onChange={handleSortChange} id='ordenamiento'>
-          <option value="">Ordenar por:</option>
-          <option value="ascName">A-Z</option>
-          <option value="descName">Z-A</option>
-          <option value="ascDate">Nuevo a Viejo</option>
-          <option value="descDate">Viejo a nuevo</option>
-        </select>
-    </div>
-    <div class="col-lg-4">
-    <form onSubmit={(event) => event.preventDefault()}>
-          <input id='ordenamiento'
-            type="text"
-            value={searchQuery}
-            onChange={handleSearchQueryChange}
-            placeholder="Buscar"
-          />
-      </form>
-    </div>
-  </div>
-      </div>
-      <div className="container">
-      <button type="button" class="btn btn-primary">Agregar</button>
-      </div>
       <div className="container" id='tabla_roles'>
-        <table className="table table-light table-striped-columns" >
+        <table className="table table-striped table-hover table-responsive" >
+
+        <thead>
+            <tr>
+              <th></th>
+
+              <th>
+              <form onSubmit={(event) => event.preventDefault()}>
+                <input id='ordenamiento'  class="form-control me-2" type="search"
+                  value={searchQuery}
+                  onChange={handleSearchQueryChange}
+                  placeholder="Buscar"
+                />
+              </form>
+              </th>
+
+              <th >
+              <select value={sortOrder} onChange={handleSortChange} id='ordenamiento' class="form-select">
+                <option value="">Ordenar por:</option>
+                <option value="ascName">A-Z</option>
+                <option value="descName">Z-A</option>
+                <option value="ascDate">Nuevo a Viejo</option>
+                <option value="descDate">Viejo a nuevo</option>
+              </select>
+              </th>
+              
+              <th><button type="button" class="btn btn-dark" id='boton_agregar'>Agregar</button></th>
+            </tr>
+          </thead>
+
+
           <thead>
             <tr className='text-center'>
               <th>ID</th>
@@ -89,7 +93,7 @@ const Categories = (props) => {
                   <th >{categorie.id}</th>
                   <th >{categorie.name}</th>
                   <th >{categorie.creation_date}</th>
-                  <th id='sizer'><button type="button" class="btn btn-black">Editar</button> <button type="button" class="btn btn-danger">Eliminar</button></th>
+                  <th id='sizer'><button type="button" class="btn btn-dark bordered">Editar</button> <button type="button" class="btn btn-danger bordered">Eliminar</button></th>
                 </tr>
               ))
             ) : null}
