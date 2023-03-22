@@ -1,7 +1,7 @@
 import { Inter } from '@next/font/google'
-import Rolslayout from '@/components/Layouts/rolslayout'
-import Roles from '@/components/Roles/roles'
-import RolTitle from '@/components/Roles/rol_title'
+import Rolslayout from '../components/Layouts/rolslayout'
+import Roles from '../components/Roles/rol_title'
+import RolTitle from '../components/Roles/roles'
 
 
 const inter = Inter({ subsets: ['latin'] })
