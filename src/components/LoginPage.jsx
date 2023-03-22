@@ -62,11 +62,11 @@ const LoginPage = () => {
                         <form onSubmit={handleSubmit} className={styles.forml}>
                             <div>
                                 <label htmlFor="username" className={styles.label}>Usuario</label>
-                                <input type="text" value={username} onChange={handleUsernameChange} className={styles.iinput} placeholder= 'Correo electrónico'/>
+                                <input type="text" value={username} class="form-control me-2" onChange={handleUsernameChange} className={styles.iinput} placeholder= 'Correo electrónico'/>
                             </div>
                             <div>
                                 <label htmlFor="password">Contraseña</label>
-                                <input type="password" value={password} onChange={handlePasswordChange} className={styles.iinput} placeholder= 'Contraseña' />
+                                <input type="password" value={password} class="form-control me-2" onChange={handlePasswordChange} className={styles.iinput} placeholder= 'Contraseña' />
                             </div>
                             <button type='buttom' onClick={() => router.push('/ProductsModule')} className={styles.button}>Iniciar sesión</button>
                         </form>
