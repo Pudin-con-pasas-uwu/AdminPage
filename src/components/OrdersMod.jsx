@@ -1,19 +1,49 @@
 import React, {useState} from 'react';
-import orderSearch from '@/components/orderSearch'
-const OrdersMod = (props) => {
+import PropTypes from 'prop-types';
 
-    const [orders, setorders] = useState(props.orders.rows);
+const orders = (props) => {
+const [sortOrder, setSortOrder] = useState('');
+const [searchQuery, setSearchQuery]  = useState('');
 
-        const filterOrders = (query, orders) => orders.filter(user => {
-            const orderSearch = ['produc_id'/*pruduct*/];
-            const queryLower = query.toLowerCase();
-            return orderSearch.some(field => user [field].toLowerCase().includes(queryLower));
-        });
+const handleSortChange = (event) => {
+setSortOrder(event.target.value);
+}; 
 
-        function handleSearch(query) {
-            const res = filterOrders(query, props.orders.rows);
-            setorders(res);
-        }
+const handleSearchQueryChange = (event) => {
+    setSearchQuery(event.target.value);
+};
+
+
+const sortedRows = () => {
+    let rows = [...props.orders.rows];
+
+    switch (sortOrder) {
+        case 'ascID':
+            rows.sort((a, b) => a.id.localeCompare(b.id));
+        break;
+        case 'descID':
+            rows.sort((a, b) => b.id.localeCompare(a.id));
+        break;
+        case 'ascDate':
+            rows.sort((a, b) => new Date(b.creation_date) - new Date(a.creation_date)); 
+        break;
+        case 'descDate':
+            rows.sort((a, b) => new Date(a.creation_date) - new Date(b.creation_date));
+        break;
+        default:
+        break;
+    }
+
+    if (searchQuery) {
+    rows = rows.filter((row) => {
+        const idMatch = row.id.toLowerCase().includes(searchQuery.toLowerCase());
+        const product_idMatch = row.product_id.toLowerCase().includes(searchQuery.toLowerCase());   G
+        return idMatch || product_idMatch;
+    });
+    }
+
+    return rows;
+};
 
     return(
         
@@ -21,11 +51,27 @@ const OrdersMod = (props) => {
             <div>
                 <h1>Historial de pedidos</h1>
             </div>
-            <div>
-                <orderSearch orders={props.orders.rows} onSearch={handleSearch} />
-            </div>
+            <div class="col-lg-8">
+    <select value={sortOrder} onChange={handleSortChange} id='ordenamiento'>
+        <option value="">Ordenar por:</option>
+        <option value="ascID">ID ascendente</option>
+        <option value="descID">ID descendente</option>
+        <option value="ascDate">Nuevo a Viejo</option>
+        <option value="descDate">Viejo a nuevo</option>
+    </select>
+    </div>
+    <div class="col-lg-4">  
+    <form onSubmit={(event) => event.preventDefault()} >
+        <input id='ordenamiento'
+            type="text"
+            value={searchQuery}
+            onChange={handleSearchQueryChange}
+            placeholder="Buscar..."
+        />
+    </form>
+    </div>
 
-            <table className="table table-dark table-striped">
+            <table className="table table-light table-striped">
                 <thead>
                     <tr>
                         <th>Order id</th>
@@ -38,8 +84,8 @@ const OrdersMod = (props) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {Array.isArray(orders)?
-                    orders.map(user => (                        
+                    {Array.isArray(props.orders.rows)?
+                    sortedRows().map(user => (                        
                         <tr key={user.id}>
                             
                             <td>{user.order_id}</td>
@@ -59,4 +105,22 @@ const OrdersMod = (props) => {
         </div>
     )
 }
-export default OrdersMod
+
+orders.propTypes = {
+    orders: PropTypes.shape({
+    rows: PropTypes.arrayOf(
+        PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        order_id: PropTypes.string.isRequired,
+        product_id: PropTypes.string.isRequired,
+        image: PropTypes.string.isRequired,
+        email: PropTypes.string.isRequired,
+        quantity: PropTypes.string.isRequired,
+        price: PropTypes.number.isRequired,
+        creation_date: PropTypes.number.isRequired,
+        })
+    ).isRequired,
+    }).isRequired,
+};
+
+export default orders
