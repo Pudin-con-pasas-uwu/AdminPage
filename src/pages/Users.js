@@ -1,8 +1,8 @@
 import React from 'react';
 import fetch from 'isomorphic-fetch'
-import Layout from '@/components/Layouts/Layout';
-import UsersMod from '@/components/UserMod/UsersMod';
-import UsersTitle from '@/components/UserMod/UsersTitle';
+import Layout from '../components/Layouts/Layout';
+import UsersMod from '../components/UserMod/UsersMod';
+import UsersTitle from '../components/UserMod/UsersTitle';
 
 
 const Users = (props) =>{
