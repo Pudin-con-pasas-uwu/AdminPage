@@ -84,7 +84,8 @@ const ProductsTable = (props) => {
                     </form> */}
                 </th>
                 <th>
-                <a href="/ProductsModule/ProductsAdd/ModuleProductsAdd"  type="button" class="btn btn-dark" id={styles.buttonadd} >add new products</a>
+                  <Link href="/ProductsModule/ProductsAdd/ModuleProductsAdd" type="button" class="btn btn-dark" id={styles.buttonadd}>add new products</Link>
+                
                 </th>
             </tr>
             <tr>

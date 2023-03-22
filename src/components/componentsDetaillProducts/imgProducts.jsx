@@ -4,7 +4,7 @@ import styles from '../../styles/butomSelectProducts.module.css';
 
 const ImgProducts = () => {
     return (
-        <Image src={Ejemplo} class="img-fluid"  id={styles.featImg}/>        
+        <Image src={Ejemplo} class="img-fluid" alt="imagen del producto"  id={styles.featImg}/>        
     );
   }
   
