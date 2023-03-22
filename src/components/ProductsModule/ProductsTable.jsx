@@ -84,7 +84,7 @@ const ProductsTable = (props) => {
                     </form> */}
                 </th>
                 <th>
-                  <Link href="" type="button" class="btn btn-dark" id={styles.buttonadd}>add new products</Link>
+                  <Link href="#" type="button" class="btn btn-dark" id={styles.buttonadd}>add new products</Link>
                   {/* <Link href="/ProductsModule/ProductsAdd/ModuleProductsAdd" type="button" class="btn btn-dark" id={styles.buttonadd}>add new products</Link> */}
                 
                 </th>
@@ -108,10 +108,10 @@ const ProductsTable = (props) => {
                 <td>{user.stock}</td>
                 <td>{user.short_desc}</td>
                 <td>
-                    <Link href={``} type="button" class="btn btn-dark" id={styles.bottomSpace}>details</Link>
+                    <Link href="#" type="button" class="btn btn-dark" id={styles.bottomSpace}>details</Link>
                     {/* <Link href={`/ProductsModule/${user.id}`} type="button" class="btn btn-dark" id={styles.bottomSpace}>details</Link> */}
                     <button type="button" class="btn btn-danger"  id={styles.bottomSpace} >delete</button>
-                    <Link href={``} type="button" class="btn btn-dark" id={styles.bottomSpace}>edit</Link>
+                    <Link href="#" type="button" class="btn btn-dark" id={styles.bottomSpace}>edit</Link>
                     {/* <Link href={`/ProductsModule/ProductsEdit/${user.id}`} type="button" class="btn btn-dark" id={styles.bottomSpace}>edit</Link>             */}
                 </td>
             </tr>

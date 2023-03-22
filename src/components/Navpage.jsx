@@ -17,8 +17,8 @@ const Navpage = () => {
     <li><Link href="/" className="mt-4">orders</Link></li> 
     <li><Link href="/Roles" className="mt-4">rols</Link></li>
     <li><Link href="/Categorias" className="mt-4">categories</Link></li>
-    <li><Link href="/" className="mt-4">products</Link></li>
-    <li><Link href="/" className="mt-4">users</Link></li>
+    <li><Link href="/ProductsModule" className="mt-4">products</Link></li>
+    <li><Link href="/Users" className="mt-4">users</Link></li>
   </ul>
 </header>
 </div>
