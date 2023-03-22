@@ -17,34 +17,34 @@ const handleSearchQueryChange = (event) => {
 
 const sortedRows = () => {
     let rows = [...props.orders.rows];
-
+  
     switch (sortOrder) {
-        case 'ascID':
-            rows.sort((a, b) => a.id.localeCompare(b.id));
+      case 'ascID':
+        rows.sort((a, b) => a.id.localeCompare(b.id));
         break;
-        case 'descID':
-            rows.sort((a, b) => b.id.localeCompare(a.id));
+      case 'descID':
+        rows.sort((a, b) => b.id.localeCompare(a.id));
         break;
-        case 'ascDate':
-            rows.sort((a, b) => new Date(b.creation_date) - new Date(a.creation_date)); 
+      case 'ascDate':
+        rows.sort((a, b) => new Date(b.creation_date) - new Date(a.creation_date)); 
         break;
-        case 'descDate':
-            rows.sort((a, b) => new Date(a.creation_date) - new Date(b.creation_date));
+      case 'descDate':
+        rows.sort((a, b) => new Date(a.creation_date) - new Date(b.creation_date));
         break;
-        default:
+      default:
         break;
     }
-
+  
     if (searchQuery) {
-        rows = rows.filter((row) => {
-            const idMatch = row.id.toLowerCase().includes(searchQuery.toLowerCase());
-            const product_idMatch = row.product_id.toString().includes(searchQuery);
-            return idMatch || product_idMatch;
-        });
+      rows = rows.filter((row) => {
+        const idMatch = row.id.toLowerCase().includes(searchQuery.toLowerCase());
+        const productMatch = row.product_id.toString().includes(searchQuery.toLowerCase()) || (row.product_id.toString() === '1' && 'nier automata 2b'.includes(searchQuery.toLowerCase())) || (row.product_id.toString() === '2' && 'chainsaw man denji'.includes(searchQuery.toLowerCase())) || (row.product_id.toString() === '3' && 'hatsune miku love sailor'.includes(searchQuery.toLowerCase())) || (row.product_id.toString() === '4' && 'rimuru tempest banpresto'.includes(searchQuery.toLowerCase())) || (row.product_id.toString() === '5' && 'nier automata a2'.includes(searchQuery.toLowerCase())) || (row.product_id.toString() === '6' && 'rent-a-girlfriend ruka sarashina exhibition v'.includes(searchQuery.toLowerCase())) || (row.product_id.toString() === '7' && 'horimiya manga set [en japones]'.includes(searchQuery.toLowerCase()));
+        return idMatch || productMatch;
+      });
     }
-
+  
     return rows;
-};
+  };
 
     return(
         
