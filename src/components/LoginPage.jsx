@@ -68,7 +68,7 @@ const LoginPage = () => {
                                 <label htmlFor="password">Contraseña</label>
                                 <input type="password" value={password} onChange={handlePasswordChange} className={styles.iinput} placeholder= 'Contraseña' />
                             </div>
-                            <button type='buttom' onClick={() => router.push('/ProductsModule')} className={styles.button}>Iniciar sesión</button>
+                            <button type='buttom' onClick={() => router.push('/Categorias')} className={styles.button}>Iniciar sesión</button>
                         </form>
                         <p>{errors}</p>
                     </div>
