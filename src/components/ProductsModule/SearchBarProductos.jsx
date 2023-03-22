@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import styles from '../../styles/SearchBarProdcutos.module.css';
+import styles from '../../styles/SearchBarProducts.module.css';
 import DetaillProducts from '@/pages/ProductsModule/[id]';
 
 export default function SearchBar() {
@@ -50,9 +50,7 @@ export default function SearchBar() {
 
   return (
     <div className={styles["search-bar-container"]}>
-      <input className={styles.input} type="text" value={query} onChange={(e) => setQuery(e.target.value)} onKeyDown={handleKeyDown} placeholder="Buscando..."/>
-      <button className={styles.button} onClick={handleSearch}>Search</button>
-
+      <input class="form-control me-2" type="text" value={query} onChange={(e) => setQuery(e.target.value)} onKeyDown={handleKeyDown} placeholder="Search for a detailed product" aria-label="Search"/>
       {results.length > 0 && (
         <ul className={styles["results-list"]}>
           {results.map((result, index) => (
