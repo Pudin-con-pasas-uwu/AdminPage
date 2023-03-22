@@ -1,7 +1,5 @@
 import React from 'react';
-
 import Link from 'next/link';
-
 
 
 const Navpage = () => {
@@ -12,13 +10,15 @@ const Navpage = () => {
     <Link href="/" className="logonav">inicio</Link>
   
   <input className="menu-btn" type="checkbox" id="menu-btn" />
+
   <label className="menu-icon" htmlFor="menu-btn"><span className="navicon"></span></label>
   <ul className="menu">
     <li><Link href="/orders" className="mt-4">orders</Link></li> 
     <li><Link href="/" className="mt-4">rols</Link></li>
     <li><Link href="/" className="mt-4">categories</Link></li>
+
     <li><Link href="/" className="mt-4">products</Link></li>
-    <li><Link href="/" className="mt-4">users</Link></li>
+    <li><Link href="/Users" className="mt-4">users</Link></li>
   </ul>
 </header>
 </div>

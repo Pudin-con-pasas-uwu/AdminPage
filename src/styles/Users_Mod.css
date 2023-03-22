@@ -1,0 +1,34 @@
+#titulo_users{
+    text-align: center;
+}
+#tabla_users{
+    margin-top: 20px;
+    display: contents;
+    justify-content: center;
+    
+}
+.AgregarBT{
+    border-radius: 0;
+    width: 150px;
+    float: right;
+    margin-bottom: 20px;
+    margin-right: 25px;
+}
+.UserSearchIN{
+    width: 115%;
+    margin-left: 9px;
+}
+#SortUser{
+    width: 175px;
+    margin-left: 40px
+}
+.OrderSearch{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.BT_ED_EL{
+    margin-bottom: 4px;
+    border-radius: 0;
+    width: 90px;
+}
