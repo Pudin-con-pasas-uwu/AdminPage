@@ -1,7 +1,9 @@
 // seccion de css
 import '@/styles/globals.css'
 import '@/styles/About.css'
+import '@/styles/Users_Mod.css'
 import '@/styles/rol_table.css'
+
 
 import { Montserrat } from 'next/font/google'
 
