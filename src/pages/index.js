@@ -1,13 +1,11 @@
-import Layout from '../components/Layouts/Layout'
+import Loginlayout from '../components/Layouts/LoginLayout'
 import LoginPage from '../components/LoginPage'
 
 
 export default function Home() {
   return (
-    <>
-      <Layout/>
-      <LoginPage/>
-      <Layout/>
-    </>
+    <Loginlayout>
+      <LoginPage/>      
+    </Loginlayout>
   )
 }
