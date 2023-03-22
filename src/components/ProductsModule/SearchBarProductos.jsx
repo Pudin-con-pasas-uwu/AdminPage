@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import styles from '../../styles/SearchBarProducts.module.css';
-import DetaillProducts from '@/pages/ProductsModule/[id]';
+import DetaillProducts from '../pages/ProductsModule/[id]';
 
 export default function SearchBar() {
   const router = useRouter();

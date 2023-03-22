@@ -1,8 +1,8 @@
-import Layout from '@/components/Layouts/Layout'
+import Layout from '../components/Layouts/Layout'
 // Importamos el hook useRouter para poder obtener el id del query string de la URL
 import { useRouter } from "next/router";
 import fetch from 'isomorphic-fetch'
-import ProductsTableEdit from '@/components/ProductsModule/ProductsTableEdit'; 
+import ProductsTableEdit from '../components/ProductsModule/ProductsTableEdit'; 
 
 const DetaillProducts = ({ user }) => {
     console.log(user)

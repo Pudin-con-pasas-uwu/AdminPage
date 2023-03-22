@@ -1,7 +1,7 @@
 import React from 'react';
-import Layout from '@/components/Layouts/Layout'
-import ProductsTable from '@/components/ProductsModule/ProductsTable';
-import SearchBar from '@/components/ProductsModule/SearchBarProductos';
+import Layout from '../components/Layouts/Layout'
+import ProductsTable from '../components/ProductsModule/ProductsTable';
+import SearchBar from '../components/ProductsModule/SearchBarProductos';
 import fetch from 'isomorphic-fetch'
 import { useRouter } from 'next/router';
 
