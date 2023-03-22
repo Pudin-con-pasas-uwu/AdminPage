@@ -67,7 +67,7 @@ const Roles = (props) => {
                 <input id='ordenamiento' class="form-control me-2" type="search"
                   value={searchQuery}
                   onChange={handleSearchQueryChange}
-                  placeholder="Buscar..."
+                  placeholder="Search"
                  />
                 </form>
 
@@ -76,30 +76,30 @@ const Roles = (props) => {
 
                 {/* ordenadores */}
               <select value={sortOrder} onChange={handleSortChange} id='ordenamiento' class="form-select">
-                <option value="">Ordenar por:</option>
+                <option value="">Order by:</option>
                 <option value="ascName">A-Z</option> {/* aqui va lo de case, dentro de value, para que sepa que funcion se hace y el handle sort  haga su trabajo*/}
                 <option value="descName">Z-A</option>
-                <option value="ascDate">Recientes</option>
-                <option value="descDate">Antiguo</option>
+                <option value="ascDate">Recent</option>
+                <option value="descDate">Oldest</option>
               </select>
               </th>
               <th></th>
               <th></th>
               <th></th>
               {/* el boton de agregar */}
-              <th><button type="button" class="btn btn-dark" id='boton_agregar'>Agregar</button></th>
+              <th><button type="button" class="btn btn-dark" id='boton_agregar'>ADD</button></th>
             </tr>
           </thead>
 
           <thead>
             <tr className='text-center'>
               <th>ID</th>
-              <th>Nombre</th>
-              <th>Usuario</th>
-              <th>Correo</th>
-              <th>Numero Tel.</th>
+              <th>Name</th>
+              <th>Username</th>
+              <th>Email</th>
+              <th>Phone Number</th>
               <th>Rol</th>
-              <th>Fecha de creación</th>
+              <th>Creation date</th>
               <th></th>
             </tr>
           </thead>
@@ -113,12 +113,12 @@ const Roles = (props) => {
                   <th className='text-center'>{rol.email}</th>
                   <th className='text-center'>{rol.phone_number}</th>
                   <th className='text-center'>
-                    {rol.role_id.toString() === '1' ? 'Administrador' : 
-                     rol.role_id.toString() === '2' ? 'Usuario' : 
-                     rol.role_id.toString() === '3' ? 'Cliente' : ''}
+                    {rol.role_id.toString() === '1' ? 'Admnin' : 
+                     rol.role_id.toString() === '2' ? 'User' : 
+                     rol.role_id.toString() === '3' ? 'Client' : ''}
                   </th>
                   <th className='text-center'>{rol.creation_date}</th>
-                  <th><button type="button" class="btn btn-dark bordered">Editar</button> <button type="button" class="btn btn-danger bordered">Eliminar</button> </th>
+                  <th><button type="button" class="btn btn-dark bordered">Edit</button> <button type="button" class="btn btn-danger bordered">Erase</button> </th>
                 </tr>
               ))
             ) : null}

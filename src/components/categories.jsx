@@ -46,6 +46,9 @@ const Categories = (props) => {
 
   return (
     <main>
+      <div className='text-center'>
+        <h3>Categories</h3>
+      </div>
       <div className="container" id='tabla_roles'>
         <table className="table table-striped table-hover table-responsive" >
 
@@ -58,22 +61,22 @@ const Categories = (props) => {
                 <input id='ordenamiento'  class="form-control me-2" type="search"
                   value={searchQuery}
                   onChange={handleSearchQueryChange}
-                  placeholder="Buscar"
+                  placeholder="Search"
                 />
               </form>
               </th>
 
               <th >
               <select value={sortOrder} onChange={handleSortChange} id='ordenamiento' class="form-select">
-                <option value="">Ordenar por:</option>
+                <option value="">Order by:</option>
                 <option value="ascName">A-Z</option>
                 <option value="descName">Z-A</option>
-                <option value="ascDate">Nuevo a Viejo</option>
-                <option value="descDate">Viejo a nuevo</option>
+                <option value="ascDate">Recent</option>
+                <option value="descDate">Oldest</option>
               </select>
               </th>
               
-              <th><button type="button" class="btn btn-dark" id='boton_agregar'>Agregar</button></th>
+              <th><button type="button" class="btn btn-dark" id='boton_agregar'>ADD</button></th>
             </tr>
           </thead>
 
@@ -81,8 +84,8 @@ const Categories = (props) => {
           <thead>
             <tr className='text-center'>
               <th>ID</th>
-              <th>Nombre</th>
-              <th >Fecha de creación</th>
+              <th>Name</th>
+              <th >Creation date</th>
               <th></th>
             </tr>
           </thead>
