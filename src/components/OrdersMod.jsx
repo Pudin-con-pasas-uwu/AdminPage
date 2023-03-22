@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 
-const orders = (props) => {
+const Orders = (props) => {
 const [sortOrder, setSortOrder] = useState('');
 const [searchQuery, setSearchQuery]  = useState('');
 
@@ -37,7 +37,7 @@ const sortedRows = () => {
     if (searchQuery) {
     rows = rows.filter((row) => {
         const idMatch = row.id.toLowerCase().includes(searchQuery.toLowerCase());
-        const product_idMatch = row.product_id.toLowerCase().includes(searchQuery.toLowerCase());   G
+        const product_idMatch = row.product_id.toLowerCase().includes(searchQuery.toLowerCase());
         return idMatch || product_idMatch;
     });
     }
@@ -51,26 +51,31 @@ const sortedRows = () => {
             <div>
                 <h1>Historial de pedidos</h1>
             </div>
-            <div class="col-lg-8">
-    <select value={sortOrder} onChange={handleSortChange} id='ordenamiento'>
-        <option value="">Ordenar por:</option>
-        <option value="ascID">ID ascendente</option>
-        <option value="descID">ID descendente</option>
-        <option value="ascDate">Nuevo a Viejo</option>
-        <option value="descDate">Viejo a nuevo</option>
-    </select>
-    </div>
-    <div class="col-lg-4">  
-    <form onSubmit={(event) => event.preventDefault()} >
-        <input id='ordenamiento'
-            type="text"
-            value={searchQuery}
-            onChange={handleSearchQueryChange}
-            placeholder="Buscar..."
-        />
-    </form>
-    </div>
 
+<div className='row'>
+<div className='col-sm-2'>
+            <form onSubmit={(event) => event.preventDefault()} >
+                <input id='OrdersMod_SearchInput'
+                    type="text"
+                    value={searchQuery}
+                    onChange={handleSearchQueryChange}
+                    placeholder="Buscar..."
+                />
+            </form>
+</div>
+<div className='col-sm-2'>
+            <select value={sortOrder} onChange={handleSortChange} id='OrdersMod_SelectInput'>
+                <option value="">Ordenar por:</option>
+                <option value="ascID">ID ascendente</option>
+                <option value="descID">ID descendente</option>
+                <option value="ascDate">Nuevo a Viejo</option>
+                <option value="descDate">Viejo a nuevo</option>
+            </select> 
+</div>
+<div className='col-sm-2 offset-sm-5'>
+        <button className='btn btn-success' id="OrdersMod_ButtonInsert">Añadir</button>
+</div>
+</div>
             <table className="table table-light table-striped">
                 <thead>
                     <tr>
@@ -80,6 +85,7 @@ const sortedRows = () => {
                         <th>Quantity</th>
                         <th>Price</th>
                         <th>Creation Date</th>
+                        <th></th>
 
                     </tr>
                 </thead>
@@ -94,6 +100,8 @@ const sortedRows = () => {
                             <td>{user.quantity}</td>
                             <td>{user.price}</td>
                             <td>{user.creation_date}</td>
+                            <td><button type="button" class="btn btn-dark bordered">Editar</button> 
+                            <button type="button" class="btn btn-danger bordered">Eliminar</button></td>
                         </tr>
 
 
@@ -106,8 +114,8 @@ const sortedRows = () => {
     )
 }
 
-orders.propTypes = {
-    orders: PropTypes.shape({
+Orders.propTypes = {
+    Orders: PropTypes.shape({
     rows: PropTypes.arrayOf(
         PropTypes.shape({
         id: PropTypes.number.isRequired,
@@ -123,4 +131,4 @@ orders.propTypes = {
     }).isRequired,
 };
 
-export default orders
+export default Orders
