@@ -93,10 +93,10 @@ const Categories = (props) => {
             {Array.isArray(props.Categories.rows) && props.Categories.rows.length > 0 ? (
               sortedRows().map((categorie) => (
                 <tr key={categorie.id}>
-                  <th >{categorie.id}</th>
-                  <th >{categorie.name}</th>
-                  <th >{categorie.creation_date}</th>
-                  <th id='sizer'><button type="button" class="btn btn-dark bordered">Editar</button> <button type="button" class="btn btn-danger bordered">Eliminar</button></th>
+                  <th className='text-center'>{categorie.id}</th>
+                  <th className='text-center'>{categorie.name}</th>
+                  <th className='text-center'>{categorie.creation_date}</th>
+                  <th id='sizir'><button type="button" class="btn btn-dark bordered">Editar</button> <button type="button" class="btn btn-danger bordered">Eliminar</button></th>
                 </tr>
               ))
             ) : null}

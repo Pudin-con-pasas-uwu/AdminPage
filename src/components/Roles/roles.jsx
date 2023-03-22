@@ -87,7 +87,7 @@ const Roles = (props) => {
               <th></th>
               <th></th>
               {/* el boton de agregar */}
-              <th><button type="button" class="btn btn-dark" id='boton_agregar'>ADD</button></th>
+              <th><button type="button" class="btn btn-dark add_rol">ADD</button></th>
             </tr>
           </thead>
 
@@ -118,7 +118,7 @@ const Roles = (props) => {
                      rol.role_id.toString() === '3' ? 'Client' : ''}
                   </th>
                   <th className='text-center'>{rol.creation_date}</th>
-                  <th><button type="button" class="btn btn-dark bordered">Edit</button> <button type="button" class="btn btn-danger bordered">Erase</button> </th>
+                  <th id='sizer'><button type="button" class="btn btn-dark bordered">Edit</button> <button type="button" class="btn btn-danger bordered">Delete</button> </th>
                 </tr>
               ))
             ) : null}

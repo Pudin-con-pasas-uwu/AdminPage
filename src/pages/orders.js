@@ -1,6 +1,6 @@
 import fetch from 'isomorphic-fetch'
-import Layout from '@/components/Layouts/Layout'
-import OrdersMod from '@/components/OrdersMod'
+import Layout from '../components/Layouts/Layout'
+import OrdersMod from '../components/OrdersMod'
 
 
 const orders = (props) => {

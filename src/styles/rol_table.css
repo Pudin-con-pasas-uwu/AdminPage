@@ -19,7 +19,17 @@
     margin-bottom: 20px;
 }
 #sizer{
+ width: 12.5%;
+}
+#sizir{
  width: 66px;
+}
+#sizor{
+    width: 12.5%;
+}
+.add_rol{
+    width: 140px;
+    border-radius: 0px;
 }
 .bordered{
     border-radius: 0px;

@@ -36,11 +36,11 @@ const sortedRows = () => {
     }
 
     if (searchQuery) {
-    rows = rows.filter((row) => {
-        const idMatch = row.id.toLowerCase().includes(searchQuery.toLowerCase());
-        const product_idMatch = row.product_id.toLowerCase().includes(searchQuery.toLowerCase());
-        return idMatch || product_idMatch;
-    });
+        rows = rows.filter((row) => {
+            const idMatch = row.id.toLowerCase().includes(searchQuery.toLowerCase());
+            const product_idMatch = row.product_id.toString().includes(searchQuery);
+            return idMatch || product_idMatch;
+        });
     }
 
     return rows;
@@ -49,68 +49,93 @@ const sortedRows = () => {
     return(
         
         <div>
-            <div>
+            <div className='text-center'>
                 <h1>Historial de pedidos</h1>
             </div>
 
-<div className='row'>
-<div className='col-sm-2'>
-            <form onSubmit={(event) => event.preventDefault()} >
-                <input id='OrdersMod_SearchInput'
-                    type="text"
-                    value={searchQuery}
-                    onChange={handleSearchQueryChange}
-                    placeholder="Buscar..."
-                />
-            </form>
-</div>
-<div className='col-sm-2'>
-            <select value={sortOrder} onChange={handleSortChange} id='OrdersMod_SelectInput'>
-                <option value="">Ordenar por:</option>
-                <option value="ascID">ID ascendente</option>
-                <option value="descID">ID descendente</option>
-                <option value="ascDate">Nuevo a Viejo</option>
-                <option value="descDate">Viejo a nuevo</option>
-            </select> 
-</div>
-<div className='col-sm-2 offset-sm-5'>
-        <button className='btn btn-success' id="OrdersMod_ButtonInsert">Añadir</button>
-</div>
-</div>
-            <table className="table table-light table-striped">
+            <div className="container id='tabla_roles'">
+                <table className="table table-striped table-hover table-responsive">
+
                 <thead>
-                    <tr>
-                        <th>Order id</th>
-                        <th>Product id</th>
-                        <th>Imagen</th>
-                        <th>Quantity</th>
-                        <th>Price</th>
-                        <th>Creation Date</th>
-                        <th></th>
+            <tr>
+              <th></th>
 
-                    </tr>
-                </thead>
-                <tbody>
-                    {Array.isArray(props.orders.rows)?
-                    sortedRows().map(user => (                        
-                        <tr key={user.id}>
-                            
-                            <td>{user.order_id}</td>
-                            <td>{user.product_id}</td>
-                            <td>{user.image}</td>
-                            <td>{user.quantity}</td>
-                            <td>{user.price}</td>
-                            <td>{user.creation_date}</td>
-                            <td><button type="button" class="btn btn-dark bordered">Editar</button> 
-                            <button type="button" class="btn btn-danger bordered">Eliminar</button></td>
+              {/* buscador */}
+              <th colspan="2"> 
+              <form onSubmit={(event) => event.preventDefault()} >
+                <input id='ordenamiento' class="form-control me-2" type="search"
+                  value={searchQuery}
+                  onChange={handleSearchQueryChange}
+                  placeholder="Search"
+                 />
+                </form>
+
+              </th>
+              <th>
+
+                {/* ordenadores */}
+              <select value={sortOrder} onChange={handleSortChange} id='ordenamiento' class="form-select">
+                <option value="">Order by:</option>
+                <option value="ascName">A-Z</option> {/* aqui va lo de case, dentro de value, para que sepa que funcion se hace y el handle sort  haga su trabajo*/}
+                <option value="descName">Z-A</option>
+                <option value="ascDate">Recent</option>
+                <option value="descDate">Oldest</option>
+              </select>
+              </th>
+              <th></th>
+              <th></th>
+              {/* el boton de agregar */}
+              <th><button type="button" class="btn btn-dark add_rol">ADD</button></th>
+            </tr>
+          </thead>
+
+
+
+
+
+
+                    <thead>
+                        <tr>
+                            <th className='text-center'>Order id</th>
+                            <th className='text-center'>Product id</th>
+                            <th className='text-center'>Imagen</th>
+                            <th className='text-center'>Quantity</th>
+                            <th className='text-center'>Price</th>
+                            <th className='text-center'>Creation Date</th>
+                            <th></th>
+
                         </tr>
+                    </thead>
+                    <tbody>
+                        {Array.isArray(props.orders.rows)?
+                        sortedRows().map(user => (                        
+                            <tr key={user.id}>
+
+                                <th className='text-center'>{user.order_id}</th>
+                                <th className='text-center'>
+                                    {user.product_id.toString() === '1' ? 'Figura Funko - Nier :Automata 2B' : 
+                                     user.product_id.toString() === '2' ? 'Nendoroid Chainsaw Man Denji' : 
+                                     user.product_id.toString() === '3' ? 'Hatsune Miku Love Sailor' : 
+                                     user.product_id.toString() === '4' ? 'Figura Rimuru Tempest - banpresto' : 
+                                     user.product_id.toString() === '5' ? 'Figura Nendoroid - Nier :Automata A2' : 
+                                     user.product_id.toString() === '6' ? 'Rent-A-Girlfriend Ruka Sarashina Exhibition V' : 
+                                     user.product_id.toString() === '7' ? 'Horimiya Manga Set [en Japones]' : 
+                                     ''}
+                                </th>
+                                <td className='text-center'>{user.image}</td>
+                                <td className='text-center'>{user.quantity}</td>
+                                <td className='text-center'>{user.price}</td>
+                                <td className='text-center'>{user.creation_date}</td>
+                                <th id='sizor'><button type="button" class="btn btn-dark bordered">Edit</button> <button type="button" class="btn btn-danger bordered">Delete</button> </th>
+                            </tr>
 
 
-                        )) : null
-                    }
-                </tbody>
+                            )) : null
+                        }
+                    </tbody>
 
-            </table>
+                </table>
+            </div>
         </div>
     )
 }
