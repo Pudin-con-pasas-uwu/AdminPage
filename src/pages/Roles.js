@@ -1,7 +1,7 @@
 import { Inter } from '@next/font/google'
 import Rolslayout from '../components/Layouts/rolslayout'
-import Roles from '../components/Roles/rol_title'
-import RolTitle from '../components/Roles/roles'
+import Roles from '../components/Roles/roles'
+import RolTitle from '../components/Roles/rol_title'
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ['latin'] })
 export default function Rols (props) {
   return (
     <Rolslayout>
-    <RolTitle/>
+      <RolTitle/>
         <Roles  Roles={props.Roles}/>
     </Rolslayout>
   )
