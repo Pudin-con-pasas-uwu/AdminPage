@@ -52,21 +52,21 @@ const LoginPage = () => {
                 <div className={styles.row}>
                     <div className={styles.logo}>
                         <Link href="/">
-                            <Image src={logo} alt="logo" width={200} height={100}/>
+                            <Image src={logo} alt="logo" width={200} height={80}/>
                         </Link>
                     </div>
                     <div className={styles.titulo}>
                         <p>¡BIENVENIDO! </p>
                     </div>
                     <div className={styles.formularioLI}>
-                        <form onSubmit={handleSubmit} className={styles.forml} novalidate>
+                        <form onSubmit={handleSubmit} className={styles.forml}>
                             <div>
-                                <label htmlFor="Correo" className={styles.label}>Usuario</label>
-                                <input type="text" placeholder='Correo' value={username} onChange={handleUsernameChange} className={styles.iinput} required />
+                                <label htmlFor="username" className={styles.label}>Usuario</label>
+                                <input type="text" value={username} onChange={handleUsernameChange} className={styles.iinput} />
                             </div>
                             <div>
                                 <label htmlFor="password" className={styles.label}>Contraseña</label>
-                                <input type="password" placeholder='Contraseña' value={password} onChange={handlePasswordChange} className={styles.iinput} required />
+                                <input type="password" value={password} onChange={handlePasswordChange} className={styles.iinput} />
                             </div>
                             <button type='buttom' onClick={() => router.push('/ProductsModule')} className={styles.button}>Iniciar sesión</button>
                         </form>
