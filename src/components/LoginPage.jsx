@@ -8,76 +8,73 @@ import logo from '../imgs/logo.jpg'
 
 
 const LoginPage = () => {
-    
+
     const router = useRouter()
-    const [username,setUser] = useState('')
-    const [password,setPassword] = useState('')
-    const [errors,setError] = useState([])
-
-    async function handleSubmit (e){
+    const [form, setForm] = useState({
+        email: '',
+        password: ''
+      })
+    
+      const handleChange = (e) => {
+        const {value, name} = e.target
+        setForm({
+          ...form,
+          [name]: value
+        })
+      }
+    
+      const handleSubmit = (e) => {
         e.preventDefault()
-        setError([]);
-        if (username === ''){
-            setError(errors => [...errors,'Agrega tu nombre de usuario']);
-            return false;
+        postData(form)
+      }
+      const postData = async (form) => {
+        try {
+          console.log(form)
+          const options = {
+            method: 'POST',
+            body: JSON.stringify(form)
+          };
+          const res = await fetch("https://ecommerce-unid.000webhostapp.com/auth", options);
+          const data = await res.json();
+          console.log(data);
+          router.push('/ProductsModule')
+        } catch (error) {
+          console.log(error, 'Llena el formulario')
         }
-        if (password === ''){
-            setError(errors => [...errors,'Agrega tu contraseña']);
-            return false;
-        }
-
-        const data = { email: username, password};
-        const url = 'https://ecommerce-unid.000webhostapp.com/auth';
-        const response = await fetch (url, { method:'POST', body: JSON.stringify(data)});
-
-        if (!response.ok){
-            setError(errors => [...errors,'No se pudo conectar con el servidor']);
-            return false;
-        }
-
-        const json = await response.json();
-        console.log(json);
-    }
-    function handleUsernameChange(event) {
-        setUser(event.target.value);
-    }
-      
-    function handlePasswordChange(event) {
-        setPassword(event.target.value);
-    }  
+      } 
     
     return(    
-        <main>
-            <div className={styles.container}>
-                <div className={styles.row}>
-                    <div className={styles.logo}>
-                        <Link href="/">
-                            <Image src={logo} alt="logo" width={215} height={90}/>
-                        </Link>
-                    </div>
-                    <div className={styles.titulo}>
-                        <p>¡BIENVENIDO! </p>
-                    </div>
-                    <div className={styles.formularioLI}>
-                        <form onSubmit={handleSubmit} className={styles.forml}>
-                            <div>
-                                <label htmlFor="username" className={styles.label}>Usuario</label>
-                                <input type="text" value={username} class="form-control me-2" onChange={handleUsernameChange} className={styles.iinput} placeholder= 'Correo electrónico'/>
-                            </div>
-                            <div>
-                                <label htmlFor="password">Contraseña</label>
-                                <input type="password" value={password} class="form-control me-2" onChange={handlePasswordChange} className={styles.iinput} placeholder= 'Contraseña' />
-                            </div>
-                            <button type='buttom' onClick={() => router.push('/ProductsModule')} className={styles.button}>Iniciar sesión</button>
-                        </form>
-                        <p>{errors}</p>
+            <main>
+                <div className={styles.container}>
+                    <div className={styles.row}>
+                        <div className={styles.logo}>
+                            <Link href="/">
+                                <Image src={logo} alt="logo" width={200} height={80}/>
+                            </Link>
+                        </div>
+                        <div className={styles.titulo}>
+                            <p>¡BIENVENIDO! </p>
+                        </div>
+                        <div className={styles.formularioLI}>
+                            <form onSubmit={handleSubmit} className={styles.forml}>
+                                <div>
+                                    <label className={styles.label} >Usuario</label>
+                                    <input type="email" name="email" value={form.email} onChange={handleChange} className={styles.iinput} />
+                                </div>
+                                <div>
+                                    <label className={styles.label} >Contraseña</label>
+                                    <input type="password" name="password" value={form.password} onChange={handleChange} className={styles.iinput} />
+                                </div>
+                                <button type='buttom' className={styles.button}>Iniciar sesión</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </main>
-    )
+            </main>
+        )
 
 }
+
 
 
 
