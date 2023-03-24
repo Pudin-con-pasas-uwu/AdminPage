@@ -1,6 +1,10 @@
 
 import React, {useState} from 'react';
-import PropTypes from 'prop-types';
+
+//--------------------------------------------------
+//librerias que no se usaran por el momento
+// import PropTypes from 'prop-types';
+//--------------------------------------------------
 
 const Orders = (props) => {
 const [sortOrder, setSortOrder] = useState('');
@@ -50,7 +54,7 @@ const sortedRows = () => {
         
         <div>
             <div className='text-center'>
-                <h1>Historial de pedidos</h1>
+                <h3>Orders history</h3>
             </div>
 
             <div className="container id='tabla_roles'">
@@ -61,9 +65,9 @@ const sortedRows = () => {
               <th></th>
 
               {/* buscador */}
-              <th colspan="2"> 
+              <th colSpan="2"> 
               <form onSubmit={(event) => event.preventDefault()} >
-                <input id='ordenamiento' class="form-control me-2" type="search"
+                <input id='ordenamiento' className="form-control me-2" type="search"
                   value={searchQuery}
                   onChange={handleSearchQueryChange}
                   placeholder="Search"
@@ -74,18 +78,18 @@ const sortedRows = () => {
               <th>
 
                 {/* ordenadores */}
-              <select value={sortOrder} onChange={handleSortChange} id='ordenamiento' class="form-select">
-                <option value="">Order by:</option>
-                <option value="ascName">A-Z</option> {/* aqui va lo de case, dentro de value, para que sepa que funcion se hace y el handle sort  haga su trabajo*/}
+              <select value={sortOrder} onChange={handleSortChange} id="SortUser" className="form-select" >
+              <option value="">Sort by:</option>
+                <option value="ascName">A-Z</option> 
                 <option value="descName">Z-A</option>
-                <option value="ascDate">Recent</option>
                 <option value="descDate">Oldest</option>
+                <option value="ascDate">Newest</option>
               </select>
               </th>
               <th></th>
               <th></th>
               {/* el boton de agregar */}
-              <th><button type="button" class="btn btn-dark add_rol">ADD</button></th>
+              <th><button type="button" className="btn btn-dark add_rol">ADD</button></th>
             </tr>
           </thead>
 
@@ -111,8 +115,8 @@ const sortedRows = () => {
                         sortedRows().map(user => (                        
                             <tr key={user.id}>
 
-                                <th className='text-center'>{user.order_id}</th>
-                                <th className='text-center'>
+                                <td className='text-center'>{user.order_id}</td>
+                                <td className='text-center'>
                                     {user.product_id.toString() === '1' ? 'Figura Funko - Nier :Automata 2B' : 
                                      user.product_id.toString() === '2' ? 'Nendoroid Chainsaw Man Denji' : 
                                      user.product_id.toString() === '3' ? 'Hatsune Miku Love Sailor' : 
@@ -121,12 +125,12 @@ const sortedRows = () => {
                                      user.product_id.toString() === '6' ? 'Rent-A-Girlfriend Ruka Sarashina Exhibition V' : 
                                      user.product_id.toString() === '7' ? 'Horimiya Manga Set [en Japones]' : 
                                      ''}
-                                </th>
+                                </td>
                                 <td className='text-center'>{user.image}</td>
                                 <td className='text-center'>{user.quantity}</td>
                                 <td className='text-center'>{user.price}</td>
                                 <td className='text-center'>{user.creation_date}</td>
-                                <th id='sizor'><button type="button" class="btn btn-dark bordered">Edit</button> <button type="button" class="btn btn-danger bordered">Delete</button> </th>
+                                <th ><button type="button" className="btn btn-dark bordered">Edit</button> <button type="button" className="btn btn-danger bordered">Delete</button> </th>
                             </tr>
 
 
@@ -140,21 +144,21 @@ const sortedRows = () => {
     )
 }
 
-Orders.propTypes = {
-    Orders: PropTypes.shape({
-    rows: PropTypes.arrayOf(
-        PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        order_id: PropTypes.string.isRequired,
-        product_id: PropTypes.string.isRequired,
-        image: PropTypes.string.isRequired,
-        email: PropTypes.string.isRequired,
-        quantity: PropTypes.string.isRequired,
-        price: PropTypes.number.isRequired,
-        creation_date: PropTypes.number.isRequired,
-        })
-    ).isRequired,
-    }).isRequired,
-};
+// Orders.propTypes = {
+//     Orders: PropTypes.shape({
+//     rows: PropTypes.arrayOf(
+//         PropTypes.shape({
+//         id: PropTypes.number.isRequired,
+//         order_id: PropTypes.string.isRequired,
+//         product_id: PropTypes.string.isRequired,
+//         image: PropTypes.string.isRequired,
+//         email: PropTypes.string.isRequired,
+//         quantity: PropTypes.string.isRequired,
+//         price: PropTypes.number.isRequired,
+//         creation_date: PropTypes.number.isRequired,
+//         })
+//     ).isRequired,
+//     }).isRequired,
+// };
 
 export default Orders

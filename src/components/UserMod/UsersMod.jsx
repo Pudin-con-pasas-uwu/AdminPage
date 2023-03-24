@@ -54,10 +54,10 @@ return (
         <option value="dateDesc">Newest</option>
         </select>
         </div>
-        <Link href="#" className="AgregarBT btn btn-dark">Agregar</Link>
+        <Link href="#" className="AgregarBT btn btn-dark">ADD</Link>
     </div>
     <div className="container" id="tabla_users">
-        <table className="table table-light table-striped" >
+        <table className="table table-striped table-hover table-responsive" >
             <thead>
             <tr>
                 <th>ID</th>
@@ -96,8 +96,8 @@ return (
                     <td>{user.creation_date}</td>
                     <td>{user.status}</td>
                     <td id="sizer">
-                    <Link href="#" className="BT_ED_EL btn btn-dark">Editar</Link>
-                    <Link href="#" className="BT_ED_EL btn btn-danger">Eliminar</Link>
+                    <Link href="#" className="BT_ED_EL btn btn-dark">Edit</Link>
+                    <Link href="#" className="BT_ED_EL btn btn-danger">Delete</Link>
                     </td>
                 </tr>
                 )) : null

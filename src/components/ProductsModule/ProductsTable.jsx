@@ -54,6 +54,9 @@ const ProductsTable = (props) => {
 
   return (
     <>
+            <div className='text-center'>
+                <h3>Products</h3>
+            </div>
         <table className="table table-striped table-hover table-responsive" id={styles.PaddingTopTable} >
         <thead>
             <tr>
@@ -68,11 +71,11 @@ const ProductsTable = (props) => {
                 </th>
                 <th colspan="2">
                     <select value={sortOrder} onChange={handleSortChange} id='ordenamiento'  class="form-select form-select " >
-                        <option selected>sort by:</option>
-                        <option value="ascName">A-Z</option>
-                        <option value="descName">Z-A</option>
-                        <option value="ascDate">Nuevo a Viejo</option>
-                        <option value="descDate">Viejo a nuevo</option>
+                    <option value="">Sort by:</option>
+                <option value="ascName">A-Z</option> 
+                <option value="descName">Z-A</option>
+                <option value="descDate">Oldest</option>
+                <option value="ascDate">Newest</option>
                     </select>
                 </th>
                 <th>

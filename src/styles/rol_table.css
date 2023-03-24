@@ -22,7 +22,7 @@
  width: 12.5%;
 }
 #sizir{
- width: 66px;
+ width: 170px;
 }
 #sizor{
     width: 12.5%;
@@ -37,4 +37,7 @@
 #boton_agregar{
     width: 174px;
     border-radius: 0px;
+}
+.ah{
+    width: 100px;
 }

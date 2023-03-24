@@ -1,4 +1,5 @@
 import { Inter } from '@next/font/google'
+import _fetch from 'isomorphic-fetch'
 import Rolslayout from '../components/Layouts/rolslayout'
 import Roles from '../components/Roles/roles'
 import RolTitle from '../components/Roles/rol_title'
