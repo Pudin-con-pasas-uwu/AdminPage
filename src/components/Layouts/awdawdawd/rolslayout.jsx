@@ -1,6 +1,6 @@
 import React from "react";
 import Head from "next/head";
-import Navpage from "../Navpage";
+import Navpage from "../../Navpage";
 
 const Rolslayout = (props) => {
   return (
