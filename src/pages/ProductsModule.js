@@ -5,14 +5,23 @@ import fetch from 'isomorphic-fetch'
 import { useRouter } from 'next/router';
 
 
+// if(sessionStorage.length > 0){
+//   router.push("/")
+// }
+// 
 
 
 const ProductsModule = (props) =>{
     // console.log(props)
     const router = useRouter();
+    if (typeof window !== 'undefined') {
+      const token = sessionStorage.getItem("token")
+      
+    }
+
+    
 
     if (!props.users) {
-      router.reload();
       return null;
     }
 

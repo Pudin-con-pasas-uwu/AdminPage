@@ -37,6 +37,13 @@ const LoginPage = () => {
           const res = await fetch("https://ecommerce-unid.000webhostapp.com/auth", options);
           const data = await res.json();
           console.log(data);
+          
+          
+          if (data?.token){
+            sessionStorage.setItem("token", data.token)
+          } 
+          
+          
           router.push('/ProductsModule')
         } catch (error) {
           console.log(error, 'Llena el formulario')
