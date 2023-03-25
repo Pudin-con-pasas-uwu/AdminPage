@@ -2,6 +2,7 @@
 import styles from '../../styles/ProductsTable.module.css';
 import Link from "next/link"; 
 import { useState } from 'react';
+import SearchBar from './SearchBarProductos';
 
 const ProductsTable = (props) => {
     // console.log(props.users.rows)
@@ -79,16 +80,10 @@ const ProductsTable = (props) => {
                     </select>
                 </th>
                 <th>
-                    {/* <form onSubmit={(event) => event.preventDefault()} >
-                        <input id='ordenamiento' class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
-                            value={searchQuery}
-                            onChange={handleSearchQueryChange}
-                        />
-                    </form> */}
+                  <SearchBar />
                 </th>
                 <th>
-                  <Link href="#" type="button" class="btn btn-dark" id={styles.buttonadd}>add new products</Link>
-                  {/* <Link href="/ProductsModule/ProductsAdd/ModuleProductsAdd" type="button" class="btn btn-dark" id={styles.buttonadd}>add new products</Link> */}
+                  <Link href="/ProductsModule/ProductsAdd/ModuleProductsAdd" type="button" class="btn btn-dark" id={styles.buttonadd}>add new products</Link>
                 
                 </th>
             </tr>
@@ -111,11 +106,9 @@ const ProductsTable = (props) => {
                 <td>{user.stock}</td>
                 <td>{user.short_desc}</td>
                 <td>
-                    <Link href="#" type="button" class="btn btn-dark" id={styles.bottomSpace}>details</Link>
-                    {/* <Link href={`/ProductsModule/${user.id}`} type="button" class="btn btn-dark" id={styles.bottomSpace}>details</Link> */}
+                    <Link href={`/ProductsModule/${user.id}`} type="button" class="btn btn-dark" id={styles.bottomSpace}>details</Link>
                     <button type="button" class="btn btn-danger"  id={styles.bottomSpace} >delete</button>
-                    <Link href="#" type="button" class="btn btn-dark" id={styles.bottomSpace}>edit</Link>
-                    {/* <Link href={`/ProductsModule/ProductsEdit/${user.id}`} type="button" class="btn btn-dark" id={styles.bottomSpace}>edit</Link>             */}
+                    <Link href={`/ProductsModule/ProductsEdit/${user.id}`} type="button" class="btn btn-dark" id={styles.bottomSpace}>edit</Link>
                 </td>
             </tr>
         )) : null

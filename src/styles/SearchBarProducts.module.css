@@ -1,12 +1,8 @@
 .search-bar-container {
+  width: 40%;
+}
+#UlSearchBar{
   position: absolute;
-  text-align: center;
-  top: 113px;
-  right: 40%;
-  z-index: +3;
-  width: 400px;
-  justify-content: center;
-  align-items: center;
 }
 
 .selected-result {
