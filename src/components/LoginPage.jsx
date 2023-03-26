@@ -23,10 +23,35 @@ const LoginPage = () => {
         })
       }
     
+      const [error, setError] = useState('')
       const handleSubmit = (e) => {
         e.preventDefault()
-        postData(form)
+        postData(form);
+
+        if (form.email !== "" || form.password === "") {
+            setError("Por favor, ingrese el email y contraseña de Administrador.");
+            return;
+        } else if(form.email === "" || !form.password){
+          setError("Email vacio.");
+          return;
+        } else{
+          alert("Conexion exitosa")
+          router.push = "/ProductsModule";
+        } 
       }
+      //     else if (!form.email){
+      //       setError("Please enter a email");
+      //       return;
+      //   } 
+
+      //   else if (!form.password){
+      //     setError("Please enter a password");
+      //     return;
+      // }        
+      //   else {
+      //     alert("Conexión exitosa")
+      //   }
+
       const postData = async (form) => {
         try {
           console.log(form)
@@ -37,6 +62,11 @@ const LoginPage = () => {
           const res = await fetch("https://ecommerce-unid.000webhostapp.com/auth", options);
           const data = await res.json();
           console.log(data);
+
+          if (data?.token){
+            sessionStorage.setItem("token", data.token)
+          }
+
           router.push('/ProductsModule')
         } catch (error) {
           console.log(error, 'Llena el formulario')
@@ -56,6 +86,7 @@ const LoginPage = () => {
                             <p>¡BIENVENIDO! </p>
                         </div>
                         <div className={styles.formularioLI}>
+                        {error && <div className={styles.error}>{error}</div>}
                             <form onSubmit={handleSubmit} className={styles.forml}>
                                 <div>
                                     <label className={styles.label} >Usuario</label>

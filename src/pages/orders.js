@@ -1,11 +1,21 @@
 import fetch from 'isomorphic-fetch'
 import Layout from '../components/Layouts/Layout'
 import OrdersMod from '../components/OrdersMod'
-
+import jwt_decode from 'jwt_decode';
 
 const orders = (props) => {
+  console.log(props.orders);
+    
+    if (typeof window !== 'undefined') {
+      const token = sessionStorage.getItem("token");
+      const decodedToken = jwt_decode(token);
+      console.log(decodedToken);
 
-  console.log(props.orders)
+      if(decodedToken?.data.rol !== 1){
+        window.location = '/'
+        return false;
+      };
+  };
 
   return (
     <Layout>
