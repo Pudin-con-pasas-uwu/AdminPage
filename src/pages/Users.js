@@ -8,6 +8,10 @@ import UsersTitle from '../components/UserMod/UsersTitle';
 const Users = (props) =>{
     console.log(props.users)
 
+    if (typeof window !== 'undefined') {
+      const token = sessionStorage.getItem("token");
+  };
+
   return (
     <Layout>
       <UsersTitle/>

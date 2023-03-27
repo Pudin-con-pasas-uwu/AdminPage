@@ -7,6 +7,10 @@ const orders = (props) => {
 
   console.log(props.orders)
 
+  if (typeof window !== 'undefined') {
+    const token = sessionStorage.getItem("token");
+};
+
   return (
     <Layout>
       <OrdersMod orders={props.orders}/>

@@ -7,6 +7,10 @@ import Categories from '../components/categories'
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home (props) {
+
+  if (typeof window !== 'undefined') {
+    const token = sessionStorage.getItem("token");
+};
   return (
     <Layout>
         <Categories  Categories={props.Categories}/>

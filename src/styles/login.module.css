@@ -22,6 +22,13 @@
     margin-left: 37.5%;
 }
 
+.error{
+    color: #b2000b;
+    font-size: 15px;
+    font-weight: bolder;
+    text-decoration: underline;;
+}
+
 .forml{
     margin-top: 5%;
     font-size: 15px;

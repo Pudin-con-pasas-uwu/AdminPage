@@ -8,6 +8,10 @@ import RolTitle from '../components/Roles/rol_title'
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Rols (props) {
+
+  if (typeof window !== 'undefined') {
+    const token = sessionStorage.getItem("token");
+};
   return (
     <Rolslayout>
       <RolTitle/>

@@ -11,6 +11,10 @@ const ProductsModule = (props) =>{
     // console.log(props)
     const router = useRouter();
 
+    if (typeof window !== 'undefined') {
+      const token = sessionStorage.getItem("token");
+  };
+
     if (!props.users) {
       router.reload();
       return null;
