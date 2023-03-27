@@ -1,7 +1,6 @@
 // import { useState, useEffect } from 'react';
 // import { useRouter } from 'next/router';
 // import styles from '../../styles/SearchBarProducts.module.css';
-// import DetaillProducts from '../pages/ProductsModule/[id]';
 
 // export default function SearchBar() {
 //   const router = useRouter();
@@ -52,7 +51,7 @@
 //     <div className={styles["search-bar-container"]}>
 //       <input class="form-control me-2" type="text" value={query} onChange={(e) => setQuery(e.target.value)} onKeyDown={handleKeyDown} placeholder="Search for a detailed product" aria-label="Search"/>
 //       {results.length > 0 && (
-//         <ul className={styles["results-list"]}>
+//         <ul className={styles["results-list"]} id={styles.UlSearchBar}>
 //           {results.map((result, index) => (
 //             <li key={result.id} style={{ color: "black" }} onClick={() => handleProductSelect(result)} onMouseOver={() => setSelectedResultIndex(index)} className={selectedResultIndex === index ? styles["selected-result"] : ""}>
 //               {result.product_name}
