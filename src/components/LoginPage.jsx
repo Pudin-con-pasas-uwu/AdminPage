@@ -28,13 +28,19 @@ const LoginPage = () => {
       const handleSubmit = (e) => {
         e.preventDefault();
         
-        if (form.email === "" || form.email === "") {
-            setError(" Ingrese credenciales de Administración.");
-            return false;
+        if (form.email === "" && form.password === ""){
+          setError("Ingrese credenciales de Administración.");
+          return false;
+        } else if(!form.email){
+          setError("Ingrese credenciales");
+          return false;
+        } else if(!form.password){
+          setError("Ingrese credenciales");
+          return false;
         } else{
-        setError("Conexión exitosa");
-        
+          setError("Conexión establecida");
         }
+        
         postData(form);
       }
 
@@ -49,6 +55,7 @@ const LoginPage = () => {
           const data = await res.json();
           console.log(data);
           router.push('/ProductsModule');
+          
           if(data?.token){
             sessionStorage.setItem("token", data.token)
           }
@@ -81,7 +88,7 @@ const LoginPage = () => {
                                     <label className={styles.label} >Contraseña</label>
                                     <input type="password" name="password" value={form.password} onChange={handleChange} className={styles.iinput} />
                                 </div>
-                                <button type='buttom' className={styles.button}>Iniciar sesión</button>
+                                <button type="submit" className={styles.button}>Iniciar sesión</button>
                             </form>
                         </div>
                     </div>
