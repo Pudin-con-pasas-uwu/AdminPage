@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import styles from '../styles/login.module.css'
 import logo from '../imgs/logo.jpg'
+import { WindowSharp } from '@mui/icons-material'
 
 
 
@@ -25,39 +26,17 @@ const LoginPage = () => {
     
       const [error, setError] = useState('')
       const handleSubmit = (e) => {
-        e.preventDefault()
+        e.preventDefault();
+        
+        if (form.email === "" || form.email === "") {
+            setError(" Ingrese credenciales de Administración.");
+            return false;
+        } else{
+        setError("Conexión exitosa");
+        
+        }
         postData(form);
-
-        
-        if (form.email !== "") {
-            setError(" Ingrese contraseña de Administración.");
-            return;
-        } else if(form.password !== ""){
-          setError("Ingrese email de Administrador");
-          return;
-        }
-        // } else if(form.email ==="" && form.password === ""){
-        //   setError("Conexión exitosa");
-        //   return;
-        // } 
-        
-        else{
-          setError("Ingrese credenciales de dministrador");
-          return;
-        }
       }
-        //     else if (!form.email){
-        //       setError("Please enter a email");
-        //       return;
-        //   } 
-
-        //   else if (!form.password){
-        //     setError("Please enter a password");
-        //     return;
-        // }        
-        //   else {
-        //     alert("Conexión exitosa")
-        //   }
 
       const postData = async (form) => {
         try {
@@ -70,6 +49,10 @@ const LoginPage = () => {
           const data = await res.json();
           console.log(data);
           router.push('/ProductsModule');
+          if(data?.token){
+            sessionStorage.setItem("token", data.token)
+          }
+          
         } catch (error) {
           console.log(error)
         }
