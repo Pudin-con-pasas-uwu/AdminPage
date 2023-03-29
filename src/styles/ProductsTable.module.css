@@ -1,7 +1,7 @@
-/* #PaddingTopTable{
-    margin-top: 1rem;
-    margin-left: 1rem;
-} */
+#PaddingTopTable {
+    margin-left: 42px;
+    width: calc(100% - 75px);
+}
 #bottomSpace{
     width: 82px;
     margin-left: 1px;
@@ -10,4 +10,5 @@
 }
 #buttonadd{
     border-radius: 0%;
+    width: 164px;
 }

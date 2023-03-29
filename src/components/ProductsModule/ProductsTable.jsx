@@ -55,66 +55,76 @@ const ProductsTable = (props) => {
 
   return (
     <>
-            <div className='text-center'>
-                <h3>Products</h3>
-            </div>
-        <table className="table table-striped table-hover table-responsive" id={styles.PaddingTopTable} >
-        <thead>
-            <tr>
-                <th></th>
-                <th>
-                    <form onSubmit={(event) => event.preventDefault()} >
-                        <input id='ordenamiento' class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
-                            value={searchQuery}
-                            onChange={handleSearchQueryChange}
-                        />
-                    </form>
-                </th>
-                <th colspan="2">
-                    <select value={sortOrder} onChange={handleSortChange} id='ordenamiento'  class="form-select form-select " >
-                    <option value="">Sort by:</option>
-                <option value="ascName">A-Z</option> 
-                <option value="descName">Z-A</option>
-                <option value="descDate">Oldest</option>
-                <option value="ascDate">Newest</option>
-                    </select>
-                </th>
-                <th>
-                  {/* < SearchBar/> */}
-                </th>
-                <th>
-                  <Link href="/ProductsModule/ProductsAdd/ModuleProductsAdd" type="button" class="btn btn-dark" id={styles.buttonadd}>add new products</Link>
-                </th>
-            </tr>
-            <tr>
-                <th>#</th>
-                <th>product name</th>
-                <th>price</th>
-                <th>stock</th>
-                <th>short description</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-        {Array.isArray(props.users.rows) && props.users.rows.length > 0 ?
-        sortedRows().map((user) => (
-            <tr key={user.id}>
-                <th>{user.id}</th>
-                <td>{user.product_name}</td>
-                <td>{user.price}</td>
-                <td>{user.stock}</td>
-                <td>{user.short_desc}</td>
-                <td>
-                    <Link href={`/ProductsModule/${user.id}`} type="button" class="btn btn-dark" id={styles.bottomSpace}>details</Link>
-                    <button type="button" class="btn btn-danger"  id={styles.bottomSpace} >delete</button>
-                    <Link href={`/ProductsModule/ProductsEdit/${user.id}`} type="button" class="btn btn-dark" id={styles.bottomSpace}>edit</Link>
-                </td>
-            </tr>
-        )) : null
-    }
-        </tbody>
-    </table>
-    </>
+        <div className='text-center'>
+          <h3>Products</h3>
+        </div>
+        <div className='table-responsive-xxl'>
+          <table className="table table-striped table-hover" id={styles.PaddingTopTable} >
+            <thead>
+                <tr>
+                    <th></th>
+                    <th colspan="3">
+                        <form onSubmit={(event) => event.preventDefault()} >
+                            <input id='ordenamiento' class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+                                value={searchQuery}
+                                onChange={handleSearchQueryChange}
+                            />
+                        </form>
+                    </th>
+                    <th colspan="3">
+                        <select value={sortOrder} onChange={handleSortChange} id='ordenamiento'  class="form-select form-select " >
+                        <option value="">Sort by:</option>
+                    <option value="ascName">A-Z</option> 
+                    <option value="descName">Z-A</option>
+                    <option value="descDate">Oldest</option>
+                    <option value="ascDate">Newest</option>
+                        </select>
+                    </th>
+                    <th>
+                      {/* < SearchBar/> */}
+                    </th>
+                    <th colspan="2">
+                      <Link href="/ProductsModule/ProductsAdd/ModuleProductsAdd" type="button" class="btn btn-dark" id={styles.buttonadd}>ADD</Link>
+                    </th>
+                </tr>
+                <tr>
+                    <th>#</th>
+                    <th>image</th>
+                    <th>category</th>
+                    <th>product name</th>
+                    <th>price</th>
+                    <th>stock</th>
+                    <th>short description</th>
+                    <th>description</th>
+                    <th>date creation</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            {Array.isArray(props.users.rows) && props.users.rows.length > 0 ?
+            sortedRows().map((user) => (
+                <tr key={user.id}>
+                    <th>{user.id}</th>
+                    <th>imagen</th>
+                    <th>{user.category_id}</th>
+                    <td>{user.product_name}</td>
+                    <td>${user.price}.MNX</td>
+                    <td>{user.stock}</td>
+                    <td>{user.short_desc}</td>
+                    <td>{user.description}</td>
+                    <td>{user.creation_date}</td>
+                    <td>
+                        {/* <Link href={`/ProductsModule/${user.id}`} type="button" class="btn btn-dark" id={styles.bottomSpace}>details</Link> */}
+                        <button type="button" class="btn btn-danger"  id={styles.bottomSpace} >delete</button>
+                        <Link href={`/ProductsModule/ProductsEdit/${user.id}`} type="button" class="btn btn-dark" id={styles.bottomSpace}>edit</Link>
+                    </td>
+                </tr>
+            )) : null
+        }
+          </tbody>
+      </table>
+    </div>
+  </>
   )
 };
 
