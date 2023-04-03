@@ -24,6 +24,18 @@
     white-space: nowrap;
     text-overflow: ellipsis;
 }
+
+/* CAMBIOS EN COMO SE VE LA DESCRIPCION LARGA */
+#TextRecortDescription:hover{
+    overflow: auto;
+    white-space: normal;
+    cursor: pointer;
+}
+#TextDecorationAbbr{
+    text-decoration: none;
+}
+/* FIN */
+
 #TextRecortShortDescription{
     max-width: 30rem;
 }

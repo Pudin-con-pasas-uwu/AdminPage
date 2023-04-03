@@ -111,7 +111,11 @@ const ProductsTable = (props) => {
                     <td>{user.product_name}</td>
                     <td>${user.price}.MNX</td>
                     <td id={styles.TextAlainCenter} >{user.stock}</td>
-                    <td id={styles.TextRecortShortDescription} >{user.short_desc}</td>
+                    <td id={styles.TextRecortShortDescription} >
+                      <abbr title={user.description}  id={styles.TextDecorationAbbr}>
+                        {user.short_desc}
+                      </abbr>
+                    </td>
                     <td id={styles.TextRecortDescription} >{user.description}</td>
                     <td>{user.creation_date}</td>
                     <td>
