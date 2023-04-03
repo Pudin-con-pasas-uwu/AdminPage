@@ -64,8 +64,7 @@ const ProductsTable = (props) => {
           <table className="table table-striped table-hover" id={styles.PaddingTopTable} >
             <thead>
                 <tr>
-                    
-                    <th colspan="7">
+                    <th colspan="6">
                         <form onSubmit={(event) => event.preventDefault()} >
                             <input id='ordenamiento' class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
                                 value={searchQuery}
@@ -73,7 +72,7 @@ const ProductsTable = (props) => {
                             />
                         </form>
                     </th>          
-                    <th colspan="1">
+                    <th colspan="2">
                         <select value={sortOrder} onChange={handleSortChange} id='ordenamiento'  class="form-select form-select " >
                         <option value="">Sort by:</option>
                     <option value="ascName">A-Z</option> 
@@ -112,9 +111,9 @@ const ProductsTable = (props) => {
                     <td>${user.price}.MNX</td>
                     <td id={styles.TextAlainCenter} >{user.stock}</td>
                     <td id={styles.TextRecortShortDescription} >
-                      <abbr title={user.description}  id={styles.TextDecorationAbbr}>
+                      {/* <abbr title={user.description}  id={styles.TextDecorationAbbr}> */}
                         {user.short_desc}
-                      </abbr>
+                      {/* </abbr> */}
                     </td>
                     <td id={styles.TextRecortDescription} >{user.description}</td>
                     <td>{user.creation_date}</td>
