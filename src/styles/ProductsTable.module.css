@@ -1,5 +1,5 @@
 #PaddingTopTable {
-    margin-left: 42px;
+    margin: auto;
     width: calc(100% - 75px);
 }
 #bottomSpace{
@@ -11,4 +11,34 @@
 #buttonadd{
     border-radius: 0%;
     width: 164px;
+}
+#SiceImg{
+    width: 100%;
+}
+#ContentImg{
+    width: 0%; 
+}
+#TextRecortDescription{
+    max-width: 20rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+/* CAMBIOS EN COMO SE VE LA DESCRIPCION LARGA */
+#TextRecortDescription:hover{
+    overflow: auto;
+    white-space: normal;
+    cursor: pointer;
+}
+#TextDecorationAbbr{
+    text-decoration: none;
+}
+/* FIN */
+
+#TextRecortShortDescription{
+    max-width: 30rem;
+}
+#TextAlainCenter{
+   text-align: center;
 }
