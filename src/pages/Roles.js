@@ -5,6 +5,7 @@ import Roles from '../components/Roles/roles'
 import RolTitle from '../components/Roles/rol_title'
 
 
+
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Rols (props) {

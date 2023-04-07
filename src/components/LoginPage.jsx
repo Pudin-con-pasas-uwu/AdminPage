@@ -26,38 +26,17 @@ const LoginPage = () => {
       const [error, setError] = useState('')
       const handleSubmit = (e) => {
         e.preventDefault()
-        postData(form);
 
-        
-        if (form.email !== "") {
-            setError(" Ingrese contraseña de Administración.");
+        if (form.email === "" || form.password === "" ) {
+            setError("Ingrese Credenciales");
             return;
-        } else if(form.password !== ""){
-          setError("Ingrese email de Administrador");
-          return;
-        }
-        // } else if(form.email ==="" && form.password === ""){
-        //   setError("Conexión exitosa");
-        //   return;
-        // } 
-        
+        } 
         else{
-          setError("Ingrese credenciales de dministrador");
-          return;
+          setError("Bienvenido");
+          router.push('/ProductsModule');
+          postData(form);
         }
       }
-        //     else if (!form.email){
-        //       setError("Please enter a email");
-        //       return;
-        //   } 
-
-        //   else if (!form.password){
-        //     setError("Please enter a password");
-        //     return;
-        // }        
-        //   else {
-        //     alert("Conexión exitosa")
-        //   }
 
       const postData = async (form) => {
         try {
@@ -66,14 +45,18 @@ const LoginPage = () => {
             method: 'POST',
             body: JSON.stringify(form)
           };
-          const res = await fetch("https://ecommerce-unid.000webhostapp.com/admin", options);
+          const res = await fetch("https://ecommerce-unid.000webhostapp.com/auth", options);
           const data = await res.json();
           console.log(data);
-          router.push('/ProductsModule');
+
+          if (data?.token){
+            sessionStorage.setItem("token", data.token)
+          }
+
         } catch (error) {
           console.log(error)
         }
-      } 
+      }
     
     return(    
             <main>
