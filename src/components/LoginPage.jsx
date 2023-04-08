@@ -26,38 +26,17 @@ const LoginPage = () => {
       const [error, setError] = useState('')
       const handleSubmit = (e) => {
         e.preventDefault()
-        postData(form);
-
         
-        if (form.email !== "") {
-            setError(" Ingrese contraseña de Administración.");
-            return;
-        } else if(form.password !== ""){
-          setError("Ingrese email de Administrador");
-          return;
-        }
-        // } else if(form.email ==="" && form.password === ""){
-        //   setError("Conexión exitosa");
-        //   return;
-        // } 
-        
-        else{
-          setError("Ingrese credenciales de dministrador");
+       if(form.email === "" && form.password === ""){
+         setError("Por favor ingrese credenciales");
+         return;
+       } else{
+          setError("Pastel de limón...");
+          postData(form);
           return;
         }
       }
-        //     else if (!form.email){
-        //       setError("Please enter a email");
-        //       return;
-        //   } 
 
-        //   else if (!form.password){
-        //     setError("Please enter a password");
-        //     return;
-        // }        
-        //   else {
-        //     alert("Conexión exitosa")
-        //   }
 
       const postData = async (form) => {
         try {
@@ -69,6 +48,11 @@ const LoginPage = () => {
           const res = await fetch("https://ecommerce-unid.000webhostapp.com/admin", options);
           const data = await res.json();
           console.log(data);
+
+          if (data?.token){
+            sessionStorage.setItem('token', data.token)
+          }
+
           router.push('/ProductsModule');
         } catch (error) {
           console.log(error)
@@ -89,7 +73,7 @@ const LoginPage = () => {
                         </div>
                         <div className={styles.formularioLI}>
                         {error && <div className={styles.error}>{error}</div>}
-                            <form onSubmit={handleSubmit} className={styles.forml}>
+                            <form className={styles.forml}>
                                 <div>
                                     <label className={styles.label} >Usuario</label>
                                     <input type="email" name="email" value={form.email} onChange={handleChange} className={styles.iinput} />
@@ -98,7 +82,7 @@ const LoginPage = () => {
                                     <label className={styles.label} >Contraseña</label>
                                     <input type="password" name="password" value={form.password} onChange={handleChange} className={styles.iinput} />
                                 </div>
-                                <button type='buttom' className={styles.button}>Iniciar sesión</button>
+                                <button type='buttom' className={styles.button} onClick={handleSubmit}>Iniciar sesión</button>
                             </form>
                         </div>
                     </div>
