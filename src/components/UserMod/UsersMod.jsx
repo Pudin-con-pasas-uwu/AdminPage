@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import BuscadorUser from './BuscadorUser';
-import OrderUser from './OrderUser';
+
 
 const UsersMod = (props) => {
 const [UsersFiltro, setUsersFiltro] = useState(props.users.rows);
 const [sortOption, setSortOption] = useState("");
-
+const [noResults, setNoResults] = useState(false); 
 
 const filterUsers = (query, users) => users.filter(user => {
     const Buscador = ['name', 'last_name', 'username', 'email', 'address','password','role_id', 'phone_number', 'birth_date','creation_date', 'status'];
@@ -17,6 +17,7 @@ const filterUsers = (query, users) => users.filter(user => {
 function handleSearch(query) {
     const Resultados = filterUsers(query, props.users.rows);
     setUsersFiltro(Resultados); 
+    setNoResults(Resultados.length === 0);
 }
 function handleSort(option) {
     setSortOption(option);
@@ -40,52 +41,61 @@ function handleSort(option) {
     }
     setUsersFiltro(sortedUsers);
     }
+
+
   
 return (
-    <div>
-        <div className="d-flex align-items-center justify-content-between">
-        <div className='OrderSearch'>
+    <main>
+    <div className="container" id="tabla_users">
+        <table className="table table-striped table-hover table-responsive table-sm" >
+        <thead>
+        <tr>
+        {/* <th></th> */}
+        <th colSpan={5}>
         <BuscadorUser users={props.users.rows} onSearch={handleSearch} />
-        <select value={sortOption} onChange={(e) => handleSort(e.target.value)} className="form-select" id="SortUser">
+        </th>
+        <th colSpan={4}>
+        <select value={sortOption} onChange={(e) => handleSort(e.target.value)} className="form-select mb-1" id="SortUser">
         <option value="">Sort by:</option>
         <option value="nameAsc">A-Z</option>
         <option value="nameDesc">Z-A</option>
         <option value="dateAsc">Oldest</option>
         <option value="dateDesc">Newest</option>
         </select>
-        </div>
-        <Link href="#" className="AgregarBT btn btn-dark">ADD</Link>
-    </div>
-    <div className="container" id="tabla_users">
-        <table className="table table-striped table-hover table-responsive" >
-            <thead>
-            <tr>
+        </th>
+        <th>
+        <Link href="/UsersModule/UsersADD" className="AgregarBT btn btn-dark mb-1">ADD</Link>
+        </th>
+       </tr>
+       </thead>
+    <thead>
+        <tr className='container'>
                 <th>ID</th>
                 <th>Name</th>
                 <th>Last name</th>
                 <th>Username</th>
                 <th>Email</th>
-                <th>Address</th>
-                <th>Password</th>
                 <th>Role</th>
                 <th>Number</th>
                 <th>Birthdate</th>
-                <th>Creation</th>
                 <th>Status</th>
-                <th>Actions</th>
             </tr>
             </thead>
             <tbody>
-            {Array.isArray(UsersFiltro) && UsersFiltro.length > 0 ?
-                UsersFiltro.map(user => (
-                <tr key={user.id}>
+        {noResults ? (
+       <tr>
+       <td colSpan={10} style={{ textAlign: "center" }}>
+        No results found.
+       </td>
+       </tr>
+       ) : (
+    UsersFiltro.map((user) => (
+        <tr key={user.id}>
                     <td>{user.id}</td>
                     <td>{user.name}</td>
                     <td>{user.last_name}</td>
                     <td>{user.username}</td>
                     <td>{user.email}</td>
-                    <td>{user.address}</td>
-                    <td>{user.password}</td>
                     <td>
                     {user.role_id.toString() === '1' ? 'Admin' : 
                      user.role_id.toString() === '2' ? 'User' : 
@@ -93,20 +103,28 @@ return (
                     </td>
                     <td>{user.phone_number}</td>
                     <td>{user.birth_date}</td>
-                    <td>{user.creation_date}</td>
-                    <td>{user.status}</td>
+                    <td>{user.status.toString() === '0' ? 'Inactivo' : 
+                     user.status.toString() === '1' ? 'Activo' :''}</td>
                     <td id="sizer">
-                    <Link href="#" className="BT_ED_EL btn btn-dark">Edit</Link>
-                    <Link href="#" className="BT_ED_EL btn btn-danger">Delete</Link>
+                   <div className="btn-group">
+                   <button type="button" className="btn btn-dark BT_ED_EL">
+                    Edit
+                   </button>
+                   <button type="button" className="btn btn-danger BT_ED_EL">
+                    Delete
+                   </button>
+
+                  </div>         
                     </td>
                 </tr>
-                )) : null
-            }
+                )) 
+
+            )}
             </tbody>
         </table>
         </div>
-        </div>
+        </main>
     )
-    };
+};
 
-    export default UsersMod;
+export default UsersMod;
