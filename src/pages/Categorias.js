@@ -1,7 +1,7 @@
 import { Inter } from '@next/font/google'
 import Layout from '../components/Layouts/Layout'
 import Categories from '../components/categories'
-
+import CategoriesTitle from '@/components/Categorias/Categories_title'
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -13,7 +13,8 @@ export default function Home (props) {
 };
   return (
     <Layout>
-        <Categories  Categories={props.Categories}/>
+      <CategoriesTitle/>
+      <Categories  Categories={props.Categories}/>
     </Layout>
   )
 }

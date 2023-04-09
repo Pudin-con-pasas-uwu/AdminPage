@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Link from "next/link";
 
 //--------------------------------------------------
 //librerias que no se usaran por el momento
@@ -55,53 +56,36 @@ const Categories = (props) => {
 
   return (
     <main>
-      <div className="text-center">
-        <h3>Categories</h3>
-      </div>
-      <div></div>
-
+<div className='text-center filter_position'>
+  <table className="table table-striped table-hover" id="PaddingTopTable">
+    <thead>
+    <tr>
+                    <th colspan="6">
+                        <form onSubmit={(event) => event.preventDefault()} >
+                            <input id='ordenamiento' class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+                                value={searchQuery}
+                                onChange={handleSearchQueryChange}
+                            />
+                        </form>
+                    </th>          
+                    <th colspan="1" id="testerw">
+                        <select value={sortOrder} onChange={handleSortChange} id='ordenamiento'  class="form-select form-select " >
+                        <option value="">Sort by:</option>
+                    <option value="ascName">A-Z</option> 
+                    <option value="descName">Z-A</option>
+                    <option value="descDate">Oldest</option>
+                    <option value="ascDate">Newest</option>
+                        </select>
+                    </th>
+                    <th colspan="2">
+                      <Link href="#" type="button" class="btn btn-dark" id="buttonadd">ADD</Link>
+                    </th>
+                </tr>
+    </thead>
+  </table>
+</div>
       <div className="container" id="tabla_roles">
         <table className="table table-striped table-hover table-responsive">
-          <thead>
-            <tr>
-              <th></th>
-
-              <th>
-                <form onSubmit={(event) => event.preventDefault()}>
-                  <input
-                    id="ordenamiento"
-                    className="form-control me-2"
-                    type="search"
-                    value={searchQuery}
-                    onChange={handleSearchQueryChange}
-                    placeholder="Search"
-                  />
-                </form>
-              </th>
-
-              <th>
-                <select
-                  value={sortOrder}
-                  onChange={handleSortChange}
-                  id="SortUser"
-                  className="form-select"
-                >
-                  <option value="">Sort by:</option>
-                  <option value="ascName">A-Z</option>
-                  <option value="descName">Z-A</option>
-                  <option value="descDate">Oldest</option>
-                  <option value="ascDate">Newest</option>
-                </select>
-              </th>
-
-              <th>
-                <button type="button" className="btn btn-dark add_rol">
-                  ADD
-                </button>
-              </th>
-            </tr>
-          </thead>
-
           <thead>
             <tr className="text-center">
               <th>ID</th>
