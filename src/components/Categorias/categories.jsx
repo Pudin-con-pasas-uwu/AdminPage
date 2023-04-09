@@ -56,42 +56,37 @@ const Categories = (props) => {
 
   return (
     <main>
-<div className='text-center filter_position'>
-  <table className="table table-striped table-hover" id="PaddingTopTable">
-    <thead>
-    <tr>
-                    <th colspan="6">
-                        <form onSubmit={(event) => event.preventDefault()} >
-                            <input id='ordenamiento' class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
-                                value={searchQuery}
-                                onChange={handleSearchQueryChange}
-                            />
-                        </form>
-                    </th>          
-                    <th colspan="1" id="testerw">
-                        <select value={sortOrder} onChange={handleSortChange} id='ordenamiento'  class="form-select form-select " >
-                        <option value="">Sort by:</option>
-                    <option value="ascName">A-Z</option> 
-                    <option value="descName">Z-A</option>
-                    <option value="descDate">Oldest</option>
-                    <option value="ascDate">Newest</option>
-                        </select>
-                    </th>
-                    <th colspan="2">
-                      <Link href="#" type="button" class="btn btn-dark" id="buttonadd">ADD</Link>
-                    </th>
-                </tr>
-    </thead>
-  </table>
+      <div className='container'>
+  <div className="row">
+    <div className="col-sm-12 col-md-4 my-2">
+      <form onSubmit={(event) => event.preventDefault()} >
+        <input id='ordenamiento' className="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+            value={searchQuery}
+            onChange={handleSearchQueryChange}
+        />
+      </form>          
+    </div>
+    <div className="col-sm-12 col-md-4 my-2">
+      <select value={sortOrder} onChange={handleSortChange} id='ordenamiento'  className="form-select form-select " >
+        <option value="">Sort by:</option>
+        <option value="ascName">A-Z</option> 
+        <option value="descName">Z-A</option>
+        <option value="descDate">Oldest</option>
+        <option value="ascDate">Newest</option>
+      </select>
+    </div>
+    <div className="col-sm-12 col-md-4 my-2">
+      <Link href="/Categorie_add" type="button" className="btn btn-dark" id="buttonadd">ADD</Link>
+    </div>
+  </div>
 </div>
       <div className="container" id="tabla_roles">
-        <table className="table table-striped table-hover table-responsive">
+        <table className="table table-striped table-hover table-responsive" id="categorias">
           <thead>
             <tr className="text-center">
               <th>ID</th>
               <th>Name</th>
-              <th>Creation date</th>
-              <th></th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -101,12 +96,11 @@ const Categories = (props) => {
                   <tr key={categorie.id}>
                     <td className="text-center">{categorie.id}</td>
                     <td className="text-center">{categorie.name}</td>
-                    <td className="text-center">{categorie.creation_date}</td>
                     <td id="sizir">
-                      <button type="button" className="btn btn-dark bordered">
+                      <button type="button" className="btn btn-dark ActionSpace">
                         Edit
                       </button>{" "}
-                      <button type="button" className="btn btn-danger bordered">
+                      <button type="button" className="btn btn-danger ActionSpace">
                         Delete
                       </button>
                     </td>

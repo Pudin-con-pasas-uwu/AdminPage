@@ -8,11 +8,15 @@ var year = today.getFullYear();
 const fechaActual = (`${year}-${month}-${day}`);
 
 const Roladding = () => {
+  
+  //aqui es donde se manda a llamar el token
+  const token = sessionStorage.getItem('token');
 
   const router = useRouter()
 
   const [form, setForm] = useState({
       name: '',
+      creation_date: fechaActual,
   })
 
   const handleChange = (e) => {
@@ -33,6 +37,11 @@ const Roladding = () => {
         console.log(form);
         const options = {
           method: 'POST',
+          //aqui van los headers con el token de autorizacion
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
           body: JSON.stringify(form)
         };
         const res = await fetch('https://ecommerce-unid.000webhostapp.com/roles', options);
