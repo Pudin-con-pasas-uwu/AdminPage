@@ -27,14 +27,12 @@ const LoginPage = () => {
       const handleSubmit = (e) => {
         e.preventDefault()
         
-        //SOLUCIÓN ALTERNATIVA//
-
-       if(form.email === "forzabycats888@gmail.com" || form.password === "1234567890"){
+       if(form.email === "" && form.password === ""){
+         setError("Por favor ingrese credenciales");
+         return;
+       } else{
           setError("Pastel de limón...");
           postData(form);
-          return;
-       } else{
-          setError("Por favor ingrese credenciales");
           return;
         }
       }
@@ -84,7 +82,7 @@ const LoginPage = () => {
                                     <label className={styles.label} >Contraseña</label>
                                     <input type="password" name="password" value={form.password} onChange={handleChange} className={styles.iinput} />
                                 </div>
-                                <button type='button' className={styles.button} onClick={handleSubmit}>Iniciar sesión</button>
+                                <button type='buttom' className={styles.button} onClick={handleSubmit}>Iniciar sesión</button>
                             </form>
                         </div>
                     </div>
