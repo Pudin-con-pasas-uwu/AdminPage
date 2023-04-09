@@ -41,3 +41,44 @@
 .ah{
     width: 100px;
 }
+
+
+/* CATEGORIE ADD FORM STYLES */
+.form-container {
+    width: 100%;
+    padding: 20px;
+  }
+  
+  .form-container label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .alabel {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    font-size: 16px;
+  }
+  #bottomSpace{
+    align-items: center;
+    width: 100%;
+    margin-left: 1px;
+    margin-bottom: 10px;
+    border-radius: 0%;
+}
+.boton_añadir{
+    text-align: center;
+}
+#PaddingTopTable {
+    margin: auto;
+    width: calc(100% - 75px);
+}
+#buttonadd{
+    margin-left: 30%;
+    border-radius: 0%;
+    width: 164px;
+}
+.filter_position{
+    margin-left: 5%;
+}
