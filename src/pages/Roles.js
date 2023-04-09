@@ -10,8 +10,11 @@ const inter = Inter({ subsets: ['latin'] })
 export default function Rols (props) {
 
   if (typeof window !== 'undefined') {
-    const token = sessionStorage.getItem("token");
-};
+    const token = sessionStorage.getItem('adminToken');
+    const decodedToken = jwt_decode(token);
+    console.log(decodedToken);
+  };
+  
   return (
     <Rolslayout>
       <RolTitle/>
