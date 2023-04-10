@@ -1,11 +1,59 @@
-#OrdersMod_SearchInput{
-    background: white;
-    color: black;
-
-
+/* --------------------------------ORDERS MOD ----------------------- */
+#ordersMod_tittle{
+    text-align: center;
+    margin-bottom: 8px;
 }
-#OrdersMod_SelectInput{
-    background: white;
-    color: black;
-    height: 26px;
+#ordersMod_addButton{
+    margin-left: 75%;
+    border-radius: 0;
+    width: 164px;
+}
+#ordersMod_table{
+    margin-top: 20px;
+    justify-content: center;
+}
+.ordersMod_optionButton{
+    width: 82px;
+}
+@media screen and (max-width: 913px) {
+    #ordersMod_addButton{
+        margin: auto;
+        justify-content: center;
+        display: flex;
+    }
+    #ordersMod_table{
+        margin-top: 20px;
+        justify-content: center;
+        font-size: 10px;
+    }
+    .ordersMod_optionButton{
+        margin-bottom: 5px;
+    }
+}
+/* ------------------------------------ORDER DETAIL -----------------------*/
+#orderDetail_tittle{
+    text-align: center;
+    margin-bottom: 8px;
+}
+#orderDetail_productName{
+    margin-top: 25px;
+    font-weight: bolder;
+    
+}
+#orderDetail_quantity{
+    margin-top: 10px;
+    font-weight: bold;
+    display: inline-block;
+}
+#orderDetail_price{
+    font-weight: bold;
+    display: inline-block;
+}
+#orderDetail_total{
+    text-align: center;
+}
+#orderDetail_backButton{
+    width: 100%;
+    border-radius: 0;
+    margin-top: 20px;
 }
