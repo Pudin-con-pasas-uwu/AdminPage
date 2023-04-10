@@ -9,7 +9,7 @@ import logo from '../imgs/logo.jpg'
 
 const LoginPage = () => {
 
-    const router = useRouter()
+    
     const [form, setForm] = useState({
         email: '',
         password: ''
@@ -22,42 +22,42 @@ const LoginPage = () => {
           [name]: value
         })
       }
-    
+      
+      const router = useRouter()
       const [error, setError] = useState('')
-      const handleSubmit = (e) => {
+      
+      const handleSubmit = async (e) => {
         e.preventDefault()
         
-       if(form.email === "" && form.password === ""){
-         setError("Por favor ingrese credenciales");
+       if(form.email.trim() === "" && form.password.trim() === ""){
+         setError("Ingrese credenciales");
          return;
-       } else{
-          setError("Pastel de limón...");
-          postData(form);
-          return;
-        }
-      }
+       }
+      
+      try {
+        console.log(form)
+        const options = {
+          method: 'POST',
+          body: JSON.stringify(form)
+        };
 
+        const res = await fetch("https://ecommerce-unid.000webhostapp.com/admin", options);
+        const data = await res.json();
+        console.log(data);
 
-      const postData = async (form) => {
-        try {
-          console.log(form)
-          const options = {
-            method: 'POST',
-            body: JSON.stringify(form)
-          };
-          const res = await fetch("https://ecommerce-unid.000webhostapp.com/admin", options);
-          const data = await res.json();
-          console.log(data);
-
-          if (data?.token){
-            sessionStorage.setItem('token', data.token)
-          }
-
+        if (data?.token){
+          sessionStorage.setItem('adminToken', data.token)
+          setError('Bienvenido a la Comarca')
           router.push('/ProductsModule');
-        } catch (error) {
-          console.log(error)
+        } else {
+          setError('Ingrese las credenciales correctas')
         }
-      } 
+      
+      } catch (error) {
+        console.log(error)
+      }
+    
+      }
     
     return(    
             <main>
