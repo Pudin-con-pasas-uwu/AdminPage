@@ -63,19 +63,19 @@ const Addingcat = () => {
 
   return (
     <main>
-      <div className="container">
-        <form onSubmit={handleSubmit}>
-          <div className="form-container alabel">
+    <div className="container">
+      <form onSubmit={handleSubmit} className="d-flex flex-column align-items-center"> {/* Agregar clase d-flex flex-column align-items-center aquí */}
+        <div className="form-container alabel text-center">
           <label>Categorie Name:</label>
           <input placeholder="New Categorie" type="text" name="name" className="form-control" value={form.name} onChange={handleChange} required />
-          </div>
-          <div className="container boton_añadir">
-            <button type="submit" className="btn btn-danger" id="bottomSpace">Add</button>
-            <button type="button" className="btn btn-dark" id="bottomSpace" onClick={() => router.back()}>Go back</button>
-          </div>
-        </form>
-      </div>
-    </main>
+        </div>
+        <div className="container boton_añadir">
+          <button type="submit" className="btn btn-danger" id="bottomSpace">Add</button>
+          <button type="button" className="btn btn-dark" id="bottomSpace" onClick={() => router.back()}>Go back</button>
+        </div>
+      </form>
+    </div>
+  </main>
   );
 };
 

@@ -97,9 +97,12 @@ const Categories = (props) => {
                     <td className="text-center">{categorie.id}</td>
                     <td className="text-center">{categorie.name}</td>
                     <td id="sizir">
+
+                      <Link href={`/roleactions/${categorie.id}`} key={categorie.id}>
                       <button type="button" className="btn btn-dark ActionSpace">
                         Edit
-                      </button>{" "}
+                      </button>  
+                      </Link>
                       <button type="button" className="btn btn-danger ActionSpace">
                         Delete
                       </button>
