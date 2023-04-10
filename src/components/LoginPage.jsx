@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -27,37 +27,43 @@ const LoginPage = () => {
       const [error, setError] = useState('')
       
       const handleSubmit = async (e) => {
-        e.preventDefault()
+          e.preventDefault()
+
+         if(form.email.trim() === "" && form.password.trim() === ""){
+           setError("Ingrese credenciales");
+           return;
+         }
+       
+        try {
+          console.log(form)
+          const options = {
+            method: 'POST',
+            body: JSON.stringify(form)
+          };
+
+          const res = await fetch("https://ecommerce-unid.000webhostapp.com/admin", options);
+          const data = await res.json();
+          console.log(data);
+
+          if (data?.token){
+            localStorage.setItem('adminToken', data.token)
+            setError('Bienvenido a la Comarca')
+            router.push('/ProductsModule');
+          } else {
+            setError('Ingrese las credenciales correctas')
+          }
         
-       if(form.email.trim() === "" && form.password.trim() === ""){
-         setError("Ingrese credenciales");
-         return;
-       }
-      
-      try {
-        console.log(form)
-        const options = {
-          method: 'POST',
-          body: JSON.stringify(form)
-        };
-
-        const res = await fetch("https://ecommerce-unid.000webhostapp.com/admin", options);
-        const data = await res.json();
-        console.log(data);
-
-        if (data?.token){
-          sessionStorage.setItem('adminToken', data.token)
-          setError('Bienvenido a la Comarca')
-          router.push('/ProductsModule');
-        } else {
-          setError('Ingrese las credenciales correctas')
+        } catch (error) {
+          console.log(error)
         }
-      
-      } catch (error) {
-        console.log(error)
-      }
-    
-      }
+      };
+      useEffect(() => {
+        const token = localStorage.getItem('adminToken');
+        if (token){
+          router.push('/ProductsModule')
+        }
+      }, [router]);
+
     
     return(    
             <main>

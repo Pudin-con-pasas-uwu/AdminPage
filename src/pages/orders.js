@@ -8,7 +8,7 @@ const orders = (props) => {
   console.log(props.orders)
 
   if (typeof window !== 'undefined') {
-    const token = sessionStorage.getItem('adminToken');
+    const token = localStorage.getItem('adminToken');
     const decodedToken = jwt_decode(token);
     console.log(decodedToken);
   };

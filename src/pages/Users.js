@@ -9,7 +9,7 @@ const Users = (props) =>{
     console.log(props.users)
 
     if (typeof window !== 'undefined') {
-      const token = sessionStorage.getItem('adminToken');
+      const token = localStorage.getItem('adminToken');
       const decodedToken = jwt_decode(token);
       console.log(decodedToken);
   };
