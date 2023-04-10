@@ -4,8 +4,8 @@ const AddHeader = () => {
     return (
         <main>
             <div className='container text-center'>
-                <h3>Add a new categorie</h3>
-                <p>please fill the field to add a categorie</p>
+                <h1>Add</h1>
+                <p>Please fill the fields to add a new categorie</p>
             </div>
         </main>
     );

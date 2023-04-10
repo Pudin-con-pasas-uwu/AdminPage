@@ -1,6 +1,6 @@
 import { Inter } from '@next/font/google'
 import Layout from '../components/Layouts/Layout'
-import Categories from '../components/categories'
+import Categories from '@/components/Categorias/categories'
 import CategoriesTitle from '@/components/Categorias/Categories_title'
 
 

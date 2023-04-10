@@ -8,6 +8,9 @@ var year = today.getFullYear();
 const fechaActual = (`${year}-${month}-${day}`);
 
 const Addingcat = () => {
+    //aqui es donde se manda a llamar el token
+    // const token = sessionStorage.getItem('token');
+
   const router = useRouter();
 
   const [form, setForm] = useState({
@@ -38,6 +41,11 @@ const Addingcat = () => {
     try {
       const options = {
         method: "POST",
+        //aqui van los headers con el token de autorizacion
+        // headers: {
+        //   'Content-Type': 'application/json',
+        //   'Authorization': `Bearer ${token}`
+        // },
         body: JSON.stringify(form),
       };
       const res = await fetch(
