@@ -2,6 +2,7 @@ import fetch from 'isomorphic-fetch'
 import Layout from '../../components/Layouts/Layout'
 import OrdersMod from '../../components/Orders/OrdersMod'
 import OrderDetail from '../../components/Orders/OrderDetail'
+import jwt_decode from 'jwt-decode'
 
 
 const orders = (props) => {
@@ -10,8 +11,10 @@ const orders = (props) => {
   console.log(props.order_detail)
 
   if (typeof window !== 'undefined') {
-    const token = sessionStorage.getItem("token");
-};
+    const token = sessionStorage.getItem('adminToken');
+    const decodedToken = jwt_decode(token);
+    console.log(decodedToken);
+  };
 
   return (
     <Layout>
