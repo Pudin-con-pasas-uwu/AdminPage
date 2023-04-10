@@ -1,6 +1,7 @@
 import React from 'react';
 import Layout from '../../../components/Layouts/Layout.jsx'
-import ProductsTableEdit from '../../../components/ProductsModule/ProductsTableEdit.jsx';
+// import ProductsTableAdd from '../../../components/ProductsModule/ProductsTableAdd.jsx';
+import RegisterProducts from '@/components/ProductsModule/RegisterProducts.jsx';
 
 
 
@@ -21,7 +22,8 @@ const ModuleProductsAdd = () =>{
               </div>
             </div>
           </center>
-        <ProductsTableEdit />
+        {/* <ProductsTableAdd /> */}
+        <RegisterProducts />
     </Layout>
   )
   

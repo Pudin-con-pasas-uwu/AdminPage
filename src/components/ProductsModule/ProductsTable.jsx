@@ -118,9 +118,9 @@ const ProductsTable = (props) => {
                     <td id={styles.TextRecortDescription} >{user.description}</td>
                     <td>{user.creation_date}</td>
                     <td>
-                        {/* <Link href={`/ProductsModule/${user.id}`} type="button" class="btn btn-dark" id={styles.bottomSpace}>details</Link> */}
-                        <button type="button" class="btn btn-danger"  id={styles.bottomSpace} >delete</button>
-                        <Link href={`/ProductsModule/ProductsEdit/${user.id}`} type="button" class="btn btn-dark" id={styles.bottomSpace}>edit</Link>
+                        {/* <Link href={`/ProductsModule/ProductsEdit/${user.id} `} type="button" class="btn btn-danger" id={styles.bottomSpace}>delete</Link> */}
+                        <button type="button" class="btn btn-danger"  id={styles.bottomSpace} onClick={() => deleteData(user.id)}>delete</button>
+                        <Link href={`/ProductsModule/ProductsEdit/${user.id} `} type="button" class="btn btn-dark" id={styles.bottomSpace}>edit</Link>
                     </td>
                 </tr>
             )) : null
@@ -132,6 +132,14 @@ const ProductsTable = (props) => {
   )
 };
 
-
+const deleteData = async(id) => {
+  try {
+    await fetch(`https://ecommerce-unid.000webhostapp.com/products/${id}`, {
+      method: 'DELETE'
+    })
+  } catch (error) {
+    console.log(error)
+  }
+}
 
 export default ProductsTable;

@@ -27,7 +27,7 @@ const DetaillProducts = ({ user }) => {
               </div>
             </div>
           </center>
-            <ProductsTableEdit />
+            <ProductsTableEdit/>
         </Layout>
     )
 }
