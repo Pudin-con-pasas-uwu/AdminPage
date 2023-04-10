@@ -43,7 +43,7 @@ const handlesubmit=(e)=>{
   method:"POST",
   body:JSON.stringify(userData)
   }).then((res)=>{
-    router.push('./UsersMod');
+    router.push('/Users');
   
 
   }).catch((err)=>{
