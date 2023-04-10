@@ -3,6 +3,8 @@ import fetch from 'isomorphic-fetch'
 import Layout from '../components/Layouts/Layout';
 import UsersMod from '../components/UserMod/UsersMod';
 import UsersTitle from '../components/UserMod/UsersTitle';
+import jwt_decode from 'jwt-decode'
+
 
 
 const Users = (props) =>{

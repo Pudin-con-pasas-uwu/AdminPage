@@ -1,6 +1,8 @@
 import fetch from 'isomorphic-fetch'
 import Layout from '../components/Layouts/Layout'
 import OrdersMod from '../components/OrdersMod'
+import jwt_decode from 'jwt-decode'
+
 
 
 const orders = (props) => {
