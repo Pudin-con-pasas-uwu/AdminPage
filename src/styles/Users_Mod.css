@@ -9,9 +9,8 @@
 .AgregarBT{
     width: 139px;
     border-radius: 0px;
-}
-#SortUser{
-    margin-right: 40px
+    float: right;
+    margin-right: 23px;
 }
 .BT_ED_EL{
     border-radius: 0;

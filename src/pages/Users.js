@@ -9,6 +9,7 @@ import jwt_decode from 'jwt-decode'
 
 const Users = (props) =>{
     console.log(props.users)
+    
 
     if (typeof window !== 'undefined') {
       const token = sessionStorage.getItem('adminToken');

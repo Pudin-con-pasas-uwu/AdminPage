@@ -46,15 +46,12 @@ function handleSort(option) {
   
 return (
     <main>
-    <div className="container" id="tabla_users">
-        <table className="table table-striped table-hover table-responsive table-sm" >
-        <thead>
-        <tr>
-        {/* <th></th> */}
-        <th colSpan={5}>
+        <div className='container'>
+            <div className="row">
+            <div className="col-sm-12 col-md-4 my-2">
         <BuscadorUser users={props.users.rows} onSearch={handleSearch} />
-        </th>
-        <th colSpan={4}>
+        </div>
+        <div className="col-sm-12 col-md-4 my-2">
         <select value={sortOption} onChange={(e) => handleSort(e.target.value)} className="form-select mb-1" id="SortUser">
         <option value="">Sort by:</option>
         <option value="nameAsc">A-Z</option>
@@ -62,12 +59,14 @@ return (
         <option value="dateAsc">Oldest</option>
         <option value="dateDesc">Newest</option>
         </select>
-        </th>
-        <th>
-        <Link href="/UsersModule/UsersADD" className="AgregarBT btn btn-dark mb-1">ADD</Link>
-        </th>
-       </tr>
-       </thead>
+        </div>
+        <div className="col-sm-12 col-md-4 my-2">
+       <Link href="/UsersModule/UsersADD" className="AgregarBT btn btn-dark mb-1">ADD</Link>
+        </div>
+        </div>
+        </div>
+    <div className="container" id="tabla_users">
+    <table className="table table-striped table-hover table-responsive table-sm" >
     <thead>
         <tr className='container'>
                 <th>ID</th>
