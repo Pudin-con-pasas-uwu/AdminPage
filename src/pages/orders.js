@@ -7,22 +7,11 @@ const orders = (props) => {
 
   console.log(props.orders)
 
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-    
-      const token = localStorage.getItem('adminToken');
-        if (!token) {
-          window.location = '/';
-          return false;
-        }
-  
-      const decodedToken = jwt_decode(token);
-        if (decodedToken?.data.rol !== 1) {
-          window.location = '/';
-          return false;
-        }
-      }
-  }, []);
+  if (typeof window !== 'undefined') {
+    const token = localStorage.getItem('adminToken');
+    const decodedToken = jwt_decode(token);
+    console.log(decodedToken);
+  };
 
   return (
     <Layout>

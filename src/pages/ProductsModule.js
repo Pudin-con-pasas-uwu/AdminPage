@@ -1,31 +1,26 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Layout from '../components/Layouts/Layout'
 import ProductsTable from '../components/ProductsModule/ProductsTable';
 import fetch from 'isomorphic-fetch';
 import jwt_decode from 'jwt-decode'
 
 
-
 const ProductsModule = (props) =>{
     // console.log(props)
 
-    useEffect(() => {
-      if (typeof window !== 'undefined') {
-      
-        const token = localStorage.getItem('adminToken');
-          if (!token) {
-            window.location = '/';
-            return false;
-          }
-    
-        const decodedToken = jwt_decode(token);
-          if (decodedToken?.data.rol !== 1) {
-            window.location = '/';
-            return false;
-          }
-        }
-    }, []); 
+    if (typeof window !== 'undefined') {
+      const token = localStorage.getItem("token");
+      const decodedToken = jwt_decode(token);
+      console.log(decodedToken);
 
+       if(decodedToken?.data.rol !== 1 ){
+         window.location = '/'
+          return false;
+       } 
+    };
+
+    
+  
 
     if (!props.users) {
       router.reload();
