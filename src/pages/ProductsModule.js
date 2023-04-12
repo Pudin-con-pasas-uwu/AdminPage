@@ -7,7 +7,7 @@ import jwt_decode from 'jwt-decode'
 
 
 const ProductsModule = (props) =>{
-    // console.log(props)
+     console.log(props)
     const router = useRouter();
 
     if (typeof window !== 'undefined') {
@@ -29,7 +29,7 @@ const ProductsModule = (props) =>{
 
   return (
     <Layout>
-        <ProductsTable users={props.users} />
+        <ProductsTable users={props.users} category={props.category}  />
     </Layout>
   )
   
@@ -37,12 +37,14 @@ const ProductsModule = (props) =>{
 
 ProductsModule.getInitialProps = async (ctx) =>{
   try {
+    const res2 = await fetch('https://ecommerce-unid.000webhostapp.com/categories');
+    const data2 = await res2.json();
     const res = await fetch('https://ecommerce-unid.000webhostapp.com/products');
     const data = await res.json();
-    return {users: data}
+    return {users: data, category: data2}
   }catch(error) {
     console.error(error);
-    return {users: null };
+    return {users, category: null };
   }
   };
 
