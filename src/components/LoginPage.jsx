@@ -6,58 +6,65 @@ import styles from '../styles/login.module.css'
 import logo from '../imgs/logo.jpg'
 
 
-
 const LoginPage = () => {
+  
+  const [form, setForm] = useState({
+    email: '',
+    password: ''
+  });
 
-    
-    const [form, setForm] = useState({
-        email: '',
-        password: ''
-      })
-    
-      const handleChange = (e) => {
-        const {value, name} = e.target
-        setForm({
-          ...form,
-          [name]: value
-        })
-      }
-      
-      const router = useRouter()
-      const [error, setError] = useState('')
-      
-      const handleSubmit = async (e) => {
-        e.preventDefault()
-        
-       if(form.email.trim() === "" && form.password.trim() === ""){
-         setError("Ingrese credenciales");
-         return;
-       }
-      
-      try {
-        console.log(form)
-        const options = {
-          method: 'POST',
-          body: JSON.stringify(form)
-        };
 
-        const res = await fetch("https://ecommerce-unid.000webhostapp.com/admin", options);
-        const data = await res.json();
-        console.log(data);
+const handleChange = (e) => {
+  const { value, name } = e.target;
+  setForm({
+    ...form,
+    [name]: value
+  });
+};
 
-        if (data?.token){
-          sessionStorage.setItem('adminToken', data.token)
-          setError('Bienvenido a la Comarca')
-          router.push('/ProductsModule');
-        } else {
-          setError('Ingrese las credenciales correctas')
-        }
-      
-      } catch (error) {
-        console.log(error)
-      }
-    
-      }
+const router = useRouter();
+const [error, setError] = useState('');
+
+// Aquí se verifica si ya existe un token en el localStorage
+if (typeof window !== 'undefined') {
+  const token = localStorage.getItem('adminToken');
+  if (token) {
+    router.replace('/ProductsModule'); // <- Aquí se redirecciona a la página de productos
+  }
+}
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  if (form.email.trim() === '' || form.password.trim() === '') {
+    setError('Ingrese credenciales');
+    return;
+  }
+
+  try {
+    console.log(form);
+    const options = {
+      method: 'POST',
+      body: JSON.stringify(form)
+    };
+
+    const res = await fetch('https://ecommerce-unid.000webhostapp.com/admin', options);
+    const data = await res.json();
+    console.log(data);
+
+    if (data?.token) {
+      localStorage.setItem('adminToken', data.token); // <- Aquí se guarda el token en localStorage
+      setError('Bienvenido a la Comarca');
+      router.push('/ProductsModule');
+      return false;
+    } else {
+      setError('Ingrese las credenciales correctas');
+      return false;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
     
     return(    
             <main>

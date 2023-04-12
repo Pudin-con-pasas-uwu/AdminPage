@@ -5,11 +5,18 @@ import Link from 'next/link';
 
 
 const Navpage = () => {
+
+  const handleLogout = () => {
+    localStorage.removeItem('adminToken');
+    window.location= ('/');
+    return false
+  }
+
     return (
         <div>
             <div className="sectionavb">
     <header className="headernav">
-    <Link href="/" className="logonav">Log Out</Link>
+    <button onClick={handleLogout}  className="logonav">Log Out</button>
   
   <input className="menu-btn" type="checkbox" id="menu-btn" />
   <label className="menu-icon" htmlFor="menu-btn"><span className="navicon"></span></label>
