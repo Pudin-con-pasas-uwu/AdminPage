@@ -26,7 +26,7 @@ const Users = (props) =>{
 
   const fetchUsers = async () => {
     try {
-      const res = await fetch('https://ecommerce-unid.000webhostapp.com/users');
+      const res = await fetch('https://ecommerunid.sistemasdelcaribe.com/all_users');
       const data = await res.json();
       setUsers(data);
     } catch (error) {
