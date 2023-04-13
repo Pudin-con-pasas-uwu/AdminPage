@@ -25,7 +25,7 @@ export default function Rols (props) {
 
   const fetchUsers = async () => {
     try {
-      const res = await fetch('https://ecommerunid.sistemasdelcaribe.com/all_roles');
+      const res = await fetch('https://ecommerce-unid.000webhostapp.com/roles');
       const data = await res.json();
       setUsers(data);
     } catch (error) {
