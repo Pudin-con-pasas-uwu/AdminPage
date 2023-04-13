@@ -14,34 +14,23 @@
     color: black;
     
 }
-#filternsearch{
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-#sizer{
- width: 12.5%;
-}
-#sizir{
- width: 170px;
-}
-#sizor{
-    width: 12.5%;
-}
-.add_rol{
-    width: 140px;
-    border-radius: 0px;
-}
+
 .bordered{
     border-radius: 0px;
 }
-#boton_agregar{
-    width: 174px;
-    border-radius: 0px;
-}
-.ah{
-    width: 100px;
-}
 
+#roles {
+    max-width: 19%;
+}
+#categorias{
+    max-width: 30%;
+}
+.ActionSpace{
+    width: 82px;
+    margin-left: 1px;
+    margin-bottom: 1px;
+    border-radius: 0%;
+}
 
 /* CATEGORIE ADD FORM STYLES */
 .form-container {
@@ -55,14 +44,14 @@
   }
   
   .alabel {
-    width: 100%;
+    width: 80%;
     padding: 10px;
     margin-bottom: 20px;
     font-size: 16px;
   }
   #bottomSpace{
     align-items: center;
-    width: 100%;
+    width: 40%;
     margin-left: 1px;
     margin-bottom: 10px;
     border-radius: 0%;
@@ -75,9 +64,19 @@
     width: calc(100% - 75px);
 }
 #buttonadd{
-    margin-left: 30%;
+    margin-left: 75%;
     border-radius: 0%;
     width: 164px;
+}
+@media screen and (max-width: 820px) {
+    #buttonadd{
+        margin: auto;
+        display: flex;
+        justify-content: center;
+    }
+    #bottomSpace{
+        width: 100%;
+    }
 }
 .filter_position{
     margin-left: 5%;

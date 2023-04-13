@@ -8,6 +8,9 @@ var year = today.getFullYear();
 const fechaActual = (`${year}-${month}-${day}`);
 
 const Addingcat = () => {
+    //aqui es donde se manda a llamar el token
+    // const token = sessionStorage.getItem('token');
+
   const router = useRouter();
 
   const [form, setForm] = useState({
@@ -38,6 +41,11 @@ const Addingcat = () => {
     try {
       const options = {
         method: "POST",
+        //aqui van los headers con el token de autorizacion
+        // headers: {
+        //   'Content-Type': 'application/json',
+        //   'Authorization': `Bearer ${token}`
+        // },
         body: JSON.stringify(form),
       };
       const res = await fetch(
@@ -55,19 +63,19 @@ const Addingcat = () => {
 
   return (
     <main>
-      <div className="container">
-        <form onSubmit={handleSubmit}>
-          <div className="form-container alabel">
+    <div className="container">
+      <form onSubmit={handleSubmit} className="d-flex flex-column align-items-center"> {/* Agregar clase d-flex flex-column align-items-center aquí */}
+        <div className="form-container alabel text-center">
           <label>Categorie Name:</label>
           <input placeholder="New Categorie" type="text" name="name" className="form-control" value={form.name} onChange={handleChange} required />
-          </div>
-          <div className="container boton_añadir">
-            <button type="submit" className="btn btn-danger" id="bottomSpace">Add</button>
-            <button type="button" className="btn btn-dark" id="bottomSpace" onClick={() => router.back()}>Go back</button>
-          </div>
-        </form>
-      </div>
-    </main>
+        </div>
+        <div className="container boton_añadir">
+          <button type="submit" className="btn btn-danger" id="bottomSpace">Add</button>
+          <button type="button" className="btn btn-dark" id="bottomSpace" onClick={() => router.back()}>Go back</button>
+        </div>
+      </form>
+    </div>
+  </main>
   );
 };
 
