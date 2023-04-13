@@ -1,10 +1,8 @@
-// table table-striped-columns (esta propiedad es la otra que queda bien)
 import styles from '../../styles/ProductsTable.module.css';
 import Link from "next/link"; 
 import { useState } from 'react';
 import Image from "next/image";
 import Ejemplo from "../../img/Ejemplo.jpg";
-// import SearchBar from './SearchBarProductos';
 
 const ProductsTable = (props) => {
     // console.log(props.users.rows)
@@ -72,7 +70,7 @@ const ProductsTable = (props) => {
                             />
                         </form>
                     </th>          
-                    <th colspan="2">
+                    <th colspan="3">
                         <select value={sortOrder} onChange={handleSortChange} id='ordenamiento'  class="form-select form-select " >
                         <option value="">Sort by:</option>
                     <option value="ascName">A-Z</option> 
@@ -99,6 +97,7 @@ const ProductsTable = (props) => {
                 </tr>
             </thead>
             <tbody>
+                                      {/* ////////////////////////////isArray//////////////////////////// */}
             {Array.isArray(props.users.rows) && props.users.rows.length > 0 ?
             sortedRows().map((user) => (
                 <tr key={user.id}>
@@ -106,7 +105,19 @@ const ProductsTable = (props) => {
                     <th id={styles.ContentImg}>
                       <Image src={Ejemplo} class="img-fluid" alt="imagen del producto" id={styles.SiceImg} /> 
                     </th>
-                    <th id={styles.TextAlainCenter} >{user.category_id}</th>
+                    
+                                      {/* ////////////////////////////categorias////////////////////////////  */}
+            <td>
+                    {user.category_id.toString() === '1' ? 'Furyuu' : 
+                     user.category_id.toString() === '2' ? 'Nendoroid' :
+                     user.category_id.toString() === '3' ? 'Good Smile Company' :
+                     user.category_id.toString() === '4' ? 'POP UP PARADE' :
+                     user.category_id.toString() === '5' ? 'Taito' :
+                     user.category_id.toString() === '6' ? 'Banpresto' :
+                     user.category_id.toString() === '7' ? 'Mangas' : 
+                     user.category_id.toString() === '8' ? 'Funko' : ''}
+            </td>
+                    {/* <th id={styles.TextAlainCenter} >{user.category_id}</th> */}
                     <td>{user.product_name}</td>
                     <td>${user.price}.MNX</td>
                     <td id={styles.TextAlainCenter} >{user.stock}</td>
