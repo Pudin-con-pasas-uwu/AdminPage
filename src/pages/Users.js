@@ -10,6 +10,7 @@ import { useRouter } from 'next/router';
 
 const Users = (props) =>{
     console.log(props.users)
+    
 
     const router = useRouter();
   const [users, setUsers] = useState(null);

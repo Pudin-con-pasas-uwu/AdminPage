@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import Link from "next/link";
     
 const FormUser = () => {
+  const router = useRouter();
 
 const [name, setName] = useState('');
 const [last_name, setLastName] = useState('');
@@ -11,6 +13,10 @@ const [email, setEmail] = useState('');
 const [password, setPassword] = useState('');
 const [phone_number, setPhoneNumber] = useState('');
 const [birth_date, setBirthdate] = useState('');
+const [roles, setRoles] = useState([]); //roles 
+const [selectedRole, setSelectedRole] = useState(""); //roles
+
+
 
   var today = new Date();
   var day = today.getDate();
@@ -30,18 +36,34 @@ const handlesubmit=(e)=>{
     phone_number, 
     birth_date, 
     creation_date: fechaActual,
+    role_id: selectedRole
   };
           
   fetch("https://ecommerce-unid.000webhostapp.com/users",{
   method:"POST",
   body:JSON.stringify(userData)
   }).then((res)=>{
+    router.push('/Users');
   
 
   }).catch((err)=>{
    console.log(err.message)
   })  
   }
+
+  // api roles
+  useEffect(() => {
+    fetch("https://ecommerce-unid.000webhostapp.com/roles")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data)
+        setRoles(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+//
     
 return (
     <div>
@@ -60,7 +82,7 @@ return (
   <input type="text"
   value={last_name} onChange={e=>setLastName(e.target.value)} 
   className="form-control" />
-  </div>
+  </div> 
 
   <div className="col-12">
   <label>Address</label>
@@ -69,12 +91,28 @@ return (
   className="form-control" />
   </div>
 
-  <div className="col-12">
+  <div className="col-6">
   <label>Username</label>
   <input type="text"
   value={username} onChange={e=>setUsername(e.target.value)} maxLength={10} 
   className="form-control" required/>
   </div>
+
+  <div className="col-6">
+  <label>Roles</label>
+  <select
+  className="form-select"
+  onChange={(e) => setSelectedRole(e.target.value)}>
+  <option> Choose a role </option>
+  {roles.rows && roles.rows.length > 0 &&
+    roles.rows.map((role) => (
+    <option key={role.id} value={role.id}>
+      {role.name}
+    </option>
+    ))
+  }
+</select>
+</div>
 
   <div className="col-md-6">
   <label>Email</label>

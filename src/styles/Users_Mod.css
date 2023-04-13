@@ -9,11 +9,12 @@
 .AgregarBT{
     width: 139px;
     border-radius: 0px;
-}
-#SortUser{
-    margin-right: 40px
+    margin-left: 70%;
 }
 .BT_ED_EL{
     border-radius: 0;
     margin: 4px;
+}
+.table-containerUsers{
+    overflow-x: auto;
 }
