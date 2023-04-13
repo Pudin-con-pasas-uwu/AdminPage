@@ -48,7 +48,7 @@ const handleSubmit = async (e) => {
       body: JSON.stringify(form)
     };
 
-    const res = await fetch('https://ecommerce-unid.000webhostapp.com/admin', options);
+    const res = await fetch('https://ecommerunid.sistemasdelcaribe.com/admin', options);
     const data = await res.json();
     console.log(data);
 
@@ -58,7 +58,7 @@ const handleSubmit = async (e) => {
       router.push('/ProductsModule');
       return false;
     } else {
-      setError('Ingrese las credenciales correctas');
+      setError('Ingrese las credenciales correctas Muggle');
       return false;
     }
   } catch (error) {

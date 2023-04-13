@@ -11,8 +11,8 @@ import { useRouter } from 'next/router';
 const Users = (props) =>{
     console.log(props.users)
     
-
-    const router = useRouter();
+    //PERMISOS ->inicio<-//
+  const router = useRouter();
   const [users, setUsers] = useState(null);
 
   useEffect(() => {
@@ -26,7 +26,7 @@ const Users = (props) =>{
 
   const fetchUsers = async () => {
     try {
-      const res = await fetch('https://ecommerce-unid.000webhostapp.com/users');
+      const res = await fetch('https://ecommerunid.sistemasdelcaribe.com/all_users');
       const data = await res.json();
       setUsers(data);
     } catch (error) {
@@ -37,6 +37,7 @@ const Users = (props) =>{
   if (!users) {
     return null;
   }
+  //PERMISOS ->fin<- (incluye users={users})//
 
   return (
     <Layout>

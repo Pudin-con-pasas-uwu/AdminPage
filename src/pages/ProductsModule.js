@@ -8,9 +8,12 @@ import { useState,useEffect } from 'react';
 
 const ProductsModule = (props) =>{
     // console.log(props)
+    
+    //PERMISOS ->inicio<-//
+    
     const router = useRouter();
     const [users, setUsers] = useState(null);
-
+    
   useEffect(() => {
     const token = localStorage.getItem('adminToken');
     if (!token) {
@@ -22,7 +25,7 @@ const ProductsModule = (props) =>{
 
   const fetchUsers = async () => {
     try {
-      const res = await fetch('https://ecommerce-unid.000webhostapp.com/products');
+      const res = await fetch('https://ecommerunid.sistemasdelcaribe.com/all_products');
       const data = await res.json();
       setUsers(data);
     } catch (error) {
@@ -33,7 +36,7 @@ const ProductsModule = (props) =>{
     if (!users) {
       return null;
     }
-
+  //PERMISOS ->fin<- (incluye users={users})//
 
   return (
     <Layout>

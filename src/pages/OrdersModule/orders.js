@@ -2,7 +2,9 @@ import fetch from 'isomorphic-fetch'
 import Layout from '../../components/Layouts/Layout'
 import OrdersMod from '../../components/Orders/OrdersMod'
 import OrderDetail from '../../components/Orders/OrderDetail'
-import jwt_decode from 'jwt-decode'
+import { useRouter } from 'next/router';
+import { useState,useEffect } from 'react';
+
 
 
 const orders = (props) => {
@@ -10,16 +12,45 @@ const orders = (props) => {
   console.log(props.orders)
   console.log(props.order_detail)
 
-  if (typeof window !== 'undefined') {
-    const token = sessionStorage.getItem('adminToken');
-    const decodedToken = jwt_decode(token);
-    console.log(decodedToken);
-  };
+  //PERMISOS ->inicio<-//
+  const router = useRouter();
+  const [users, setUsers] = useState(null);
+
+useEffect(() => {
+  const token = localStorage.getItem('adminToken');
+  if (!token) {
+    router.push('/');
+  } else {
+    fetchUsers();
+  }
+}, [router]);
+
+const fetchUsers = async () => {
+  try {
+    const URL = 'https://ecommerunid.sistemasdelcaribe.com/all_orders'
+      const res = await fetch(URL);
+      const data = await res.json();
+    
+    const URL_1 = 'https://ecommerunid.sistemasdelcaribe.com/all_orders_details'
+      const res1 = await fetch(URL_1);
+      const data1 = await res1.json();
+      
+    setUsers(data, data1);
+
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+  if (!users) {
+    return null;
+  }
+  //PERMISOS ->fin<- (incluye users={users})//
 
   return (
     <Layout>
-      <OrdersMod orders={props.orders}/>
-      <OrderDetail order_detail={props.order_detail} orders={props.orders}/>
+      <OrdersMod orders={props.orders} users={users}/>
+      <OrderDetail order_detail={props.order_detail} orders={props.orders} users={users}/>
     </Layout>
   )
 }
