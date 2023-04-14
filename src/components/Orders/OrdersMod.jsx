@@ -40,9 +40,20 @@ const sortedRows = () => {
         return idMatch || user_idMatch;
       });
     }
-  
     return rows;
   };
+
+  const deleteOrder = async(id) => {
+    try {
+      const options = {
+        method: 'DELETE'
+      }
+      await fetch(`https://ecommerunid.sistemasdelcaribe.com/delete_order_detail/${id}`, options)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  
     return(
         
         <div>
@@ -95,7 +106,7 @@ const sortedRows = () => {
                                 <td className='text-center'>${order.total_amount}.MNX</td>
                                 <td className='text-center'>{order.creation_date}</td>
                                 <td className='text-center'>{order.order_status}</td>
-                                <th ><Link type="button" className="btn btn-dark bordered ordersMod_optionButton" href={`order_detail/${order.id}`}>Detail </Link> <Link type="button" className="btn btn-dark bordered ordersMod_optionButton" href={`order_update/${order.id}`}>Edit</Link> <button type="button" className="btn btn-danger bordered ordersMod_optionButton">Delete</button> </th>
+                                <th ><Link type="button" className="btn btn-dark bordered ordersMod_optionButton" href={`order_detail/${order.id}`}>Detail </Link> <Link type="button" className="btn btn-dark bordered ordersMod_optionButton" href={`order_update/${order.id}`}>Edit</Link> <button type="button" className="btn btn-danger bordered ordersMod_optionButton" onClick={() => deleteOrder(order.id)}>Delete</button> </th>
                             </tr>
                             
                             )): null
