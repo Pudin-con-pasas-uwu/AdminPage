@@ -54,11 +54,11 @@ const handleSubmit = async (e) => {
 
     if (data?.token) {
       localStorage.setItem('adminToken', data.token); // <- Aquí se guarda el token en localStorage
-      setError('Bienvenido a la Comarca');
+      setError('Bienvenido');
       router.push('/ProductsModule');
       return false;
     } else {
-      setError('Ingrese las credenciales correctas Muggle');
+      setError('Ingrese las credenciales correctas');
       return false;
     }
   } catch (error) {

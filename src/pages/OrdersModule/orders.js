@@ -27,10 +27,7 @@ const orders = (props) => {
       const res = await fetch('https://ecommerunid.sistemasdelcaribe.com/all_orders');
       const data = await res.json();
       
-      const res1 = await fetch('https://ecommerunid.sistemasdelcaribe.com/all_orders_details');
-      const data1 = await res1.json();
-      
-      setUsers(data, data1);
+      setUsers(data);
     
     } catch (error) {
       console.error(error);

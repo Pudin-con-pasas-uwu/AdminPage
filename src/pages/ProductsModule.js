@@ -22,7 +22,7 @@ const ProductsModule = (props) =>{
 
   const fetchUsers = async () => {
     try {
-      const res = await fetch('hhttps://ecommerunid.sistemasdelcaribe.com/all_products');
+      const res = await fetch('https://ecommerunid.sistemasdelcaribe.com/all_products');
       const data = await res.json();
       setUsers(data);
     } catch (error) {
