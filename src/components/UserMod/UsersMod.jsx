@@ -42,7 +42,20 @@ function handleSort(option) {
     setUsersFiltro(sortedUsers);
     }
 
-
+    const handleDelete = async (id) => {
+        const confirmDelete = window.confirm("Are you sure you want to delete this user?");
+        if(confirmDelete) {
+        try {
+          const options = {
+            method: 'DELETE'
+          }
+          await fetch(`https://ecommerunid.sistemasdelcaribe.com/delete_user/${id}`, options)
+        } catch (error) {
+          console.log(error)
+        }
+      }
+    }
+      
   
 return (
     <main>
@@ -65,10 +78,10 @@ return (
         </div>
         </div>
         </div>
-    <div className="container" id="tabla_users">
-    <table className="table table-striped table-hover table-responsive table-sm" >
-    <thead>
-        <tr className='container'>
+    <div className="table-responsive-xxl">        
+    <table className="table table-striped table-hover table-sm" id="PaddingTopTable" >
+        <thead>
+        <tr>
                 <th>ID</th>
                 <th>Name</th>
                 <th>Last name</th>
@@ -106,10 +119,8 @@ return (
                      user.status.toString() === '1' ? 'Activo' :''}</td>
                     <td id="sizer">
                    <div className="btn-group">
-                   <button type="button" className="btn btn-dark BT_ED_EL">
-                    Edit
-                   </button>
-                   <button type="button" className="btn btn-danger BT_ED_EL">
+                   <Link href="/UsersModule/UsersEdit" className="btn btn-dark BT_ED_EL">Edit</Link>
+                   <button type="button" className="btn btn-danger BT_ED_EL" onClick={() => handleDelete(user.id)}>
                     Delete
                    </button>
 
@@ -117,7 +128,6 @@ return (
                     </td>
                 </tr>
                 )) 
-
             )}
             </tbody>
         </table>

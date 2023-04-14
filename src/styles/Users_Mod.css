@@ -1,15 +1,10 @@
 #titulo_users{
     text-align: center;
 }
-#tabla_users{
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-}
 .AgregarBT{
-    width: 139px;
-    border-radius: 0px;
-    margin-left: 70%;
+    margin-left: 75%;
+    border-radius: 0;
+    width: 135px;
 }
 .BT_ED_EL{
     border-radius: 0;
@@ -17,4 +12,8 @@
 }
 .table-containerUsers{
     overflow-x: auto;
+}
+#PaddingTopTable {
+    margin: auto;
+    width: calc(100% - 75px);
 }

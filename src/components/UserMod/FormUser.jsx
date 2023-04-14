@@ -44,8 +44,6 @@ const handlesubmit=(e)=>{
   body:JSON.stringify(userData)
   }).then((res)=>{
     router.push('/Users');
-  
-
   }).catch((err)=>{
    console.log(err.message)
   })  
@@ -53,7 +51,7 @@ const handlesubmit=(e)=>{
 
   // api roles
   useEffect(() => {
-    fetch("https://ecommerce-unid.000webhostapp.com/roles")
+    fetch("https://ecommerunid.sistemasdelcaribe.com/all_roles")
       .then((response) => response.json())
       .then((data) => {
         console.log(data)
