@@ -46,7 +46,7 @@ export default function Home (props) {
 }
 
 Home.getInitialProps = async (ctx) =>{
-    const res = await fetch('https://ecommerce-unid.000webhostapp.com/categories');
+    const res = await fetch('https://ecommerunid.sistemasdelcaribe.com/all_categories');
     const data = await res.json();
     return {Categories: data}
   }

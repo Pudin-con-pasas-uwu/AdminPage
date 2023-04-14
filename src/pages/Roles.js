@@ -46,7 +46,7 @@ export default function Rols (props) {
 }
 
 Rols.getInitialProps = async (ctx) =>{
-    const res = await fetch('https://ecommerce-unid.000webhostapp.com/roles');
+    const res = await fetch('https://ecommerunid.sistemasdelcaribe.com/all_roles');
     const data = await res.json();
     return {Roles: data}
   }

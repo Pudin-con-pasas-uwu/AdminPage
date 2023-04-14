@@ -57,6 +57,17 @@ const Roles = (props) => {
     return rows;
   };
 
+  const deleterole = async(id) => {
+    try {
+      const options = {
+        method: 'DELETE'
+      }
+      await fetch(`https://ecommerunid.sistemasdelcaribe.com/delete_role/${id}`, options)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
     <main>
       <div className='container'>
@@ -98,10 +109,12 @@ const Roles = (props) => {
                   <tr key={rol.id}>
                     <td className="text-center">{rol.name}</td>
                     <td className="">
-                      <Link href="#"><button type="button" className="btn btn-dark ActionSpace">
+                    <Link href={`/roleactions/${rol.id}`} key={rol.id}>
+                      <button type="button" className="btn btn-dark ActionSpace">
                         Edit
-                      </button></Link>
-                      <button type="button" className="btn btn-danger ActionSpace">
+                      </button>  
+                      </Link>
+                      <button type="button" className="btn btn-danger ActionSpace" onClick={() => deleterole(rol.id)}  >
                         Delete
                       </button>{" "}
                     </td>

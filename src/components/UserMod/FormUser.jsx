@@ -39,7 +39,7 @@ const handlesubmit=(e)=>{
     role_id: selectedRole
   };
           
-  fetch("https://ecommerce-unid.000webhostapp.com/users",{
+  fetch("https://ecommerunid.sistemasdelcaribe.com/insert_user",{
   method:"POST",
   body:JSON.stringify(userData)
   }).then((res)=>{

@@ -53,6 +53,17 @@ const Categories = (props) => {
 
     return rows;
   };
+  
+  const deletecategorie = async(id) => {
+    try {
+      const options = {
+        method: 'DELETE'
+      }
+      await fetch(`https://ecommerunid.sistemasdelcaribe.com/delete_categorie/${id}`, options)
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   return (
     <main>
@@ -98,12 +109,12 @@ const Categories = (props) => {
                     <td className="text-center">{categorie.name}</td>
                     <td id="sizir">
 
-                      <Link href={`/roleactions/${categorie.id}`} key={categorie.id}>
+                      <Link href={`/categoriesactions/${categorie.id}`} key={categorie.id}>
                       <button type="button" className="btn btn-dark ActionSpace">
                         Edit
                       </button>  
                       </Link>
-                      <button type="button" className="btn btn-danger ActionSpace">
+                      <button type="button" className="btn btn-danger ActionSpace" onClick={() => deletecategorie(categorie.id)} >
                         Delete
                       </button>
                     </td>

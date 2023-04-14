@@ -10,7 +10,7 @@ const fechaActual = (`${year}-${month}-${day}`);
 const Roladding = () => {
   
   // //aqui es donde se manda a llamar el token
-  // const token = sessionStorage.getItem('token');
+  // const token = localStorage.getItem('adminToken');
 
   const router = useRouter()
 
@@ -44,7 +44,7 @@ const Roladding = () => {
           // },
           body: JSON.stringify(form)
         };
-        const res = await fetch('https://ecommerce-unid.000webhostapp.com/roles', options);
+        const res = await fetch('https://ecommerunid.sistemasdelcaribe.com/insert_role', options);
         const data = await res.json();
         console.log(data);
     } catch(error){
@@ -55,7 +55,7 @@ const Roladding = () => {
   return (
     <main>
       <div className="container">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="d-flex flex-column align-items-center">
           <div className="form-container alabel">
           <label>Rol Name:</label>
           <input placeholder="The new rol" type="text" name="name" className="form-control" value={form.name} onChange={handleChange} required />
