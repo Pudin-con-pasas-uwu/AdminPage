@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { useState } from "react";
 import styles from '../../styles/butomSelectProducts.module.css';
+import CategorySelect from "./CategorySelect";
 
 var today = new Date();
 var day = today.getDate();
@@ -11,8 +12,8 @@ const fechaActual = (`${year}-${month}-${day}`);
 
 const RegisterProducts = () => {
 
-  //aqui es donde se manda a llamar el token
-  // const token = sessionStorage.getItem('token');
+//   aqui es donde se manda a llamar el token
+  // const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2ODExNzIyNTcsImRhdGEiOiIxIn0.TUuXhlOxdAF1wxFdMZfjD3Uk6coXo46jv3FkrakTwgo";
   
   const router = useRouter();
 
@@ -38,54 +39,54 @@ const RegisterProducts = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+//     postData(form);
+//   }
+//   const postData = async (form) => {
+//     try{
+//         console.log(form);
+//         const options = {
+//           method: 'POST',
+//           body: JSON.stringify(form)
+//         };
+//           const res = await fetch('https://ecommerce-unid.000webhostapp.com/products', options); ojo error cors ojo  ....  ver libreria axios
+//           const data = await res.json();
+//           console.log(data);
+//         router.push('')
+//     } catch(error){
+//         console.log(error);
+//     }
+
+//   }
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    postData(form);
-  }
-  const postData = async (form) => {
-    try{
-        console.log(form);
-        const options = {
-          method: 'POST',
-          body: JSON.stringify(form)
-        };
-          const res = await fetch('https://ecommerce-unid.000webhostapp.com/products', options);
-          const data = await res.json();
-          console.log(data);
-        router.push('')
-    } catch(error){
-        console.log(error);
+
+    if (isLoading) {
+      return;
     }
 
-  }
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
+    setIsLoading(true);
 
-  //   if (isLoading) {
-  //     return;
-  //   }
-
-  //   setIsLoading(true);
-
-  //   try {
-  //     const options = {
-  //       method: "POST",
-  //       //aqui van los headers con el token de autorizacion
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //         'Authorization': `Bearer ${token}`
-  //       },
-  //       body: JSON.stringify(form),
-  //     };
-  //     const res = await fetch("https://ecommerce-unid.000webhostapp.com/products", options);
-  //     const data = await res.json();
-  //     console.log(data);
-  //   } catch (error) {
-  //     console.log(error);
-  //   } finally {
-  //     setIsLoading(false);
-  //   }
-  // };
+    try {
+      const options = {
+        method: "POST",
+        //aqui van los headers con el token de autorizacion 
+        // headers: {
+        //   'Content-Type': 'application/json',
+        //   'Authorization': `Bearer ${token}`
+        // },
+        body: JSON.stringify(form),
+      };
+      const res = await fetch("https://ecommerce-unid.000webhostapp.com/products", options);
+      const data = await res.json();
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   
     return (
@@ -94,44 +95,20 @@ const RegisterProducts = () => {
       <form action="" onSubmit={handleSubmit}>
           <div className='container'>
               <div className='row tuxteno'>
-                  <div className='col-md-12'>
+                  <div className='col-md-6'>
                       <label className='form-label'>Product name</label>
                       <input type="text" className='form-control' name='product_name' value={form.product_name} onChange={handleChange}  required />
                   </div>
-                  {/* <div class="col-md-6">
+                  <div class="col-md-6">
                       <label for="formFile" class="form-label">Select your image</label>
                       <input class="form-control" type="file" name='image' id="formFile"/>
-                  </div>  */}
+                  </div> 
               </div>
           </div>
           <br />
           <div className='container'>
               <div className='row tuxteno'>
-                  <div className='col-md-4'>
-                      {/* <label for="formFile" class="form-label">Select category</label>
-                      <div class="input-group mb-3">
-                          <label class="input-group-text" for="inputGroupSelect01">category</label>
-                              <select class="form-select" id="inputGroupSelect01">
-                                  <option selected>Choose...</option>
-                                  <option value="1">Furyuu</option>
-                                  <option value="2">Nendoroid</option>
-                                  <option value="3">Good Smile Company</option>
-                                  <option value="4">POP UP PARADE</option>
-                                  <option value="5">Taito</option>
-                                  <option value="6">Banpresto</option>
-                                  <option value="7">Mangas</option>
-                                  <option value="8">Funko</option>
-                              </select>
-                      </div> */}
-
-                              {/* aca se pone el numero de la categoria asta que bak enlase las tablas */}
-
-                      <div className='col-md-12'>
-                        <label className='form-label'>#categoria</label>
-                        <input type="text" className='form-control' name="category_id" value={form.category_id} onChange={handleChange} required />
-                    </div>
-                  </div>
-
+                  <CategorySelect />
                   <div className='col-md-4'>
                           <label for="formFile" class="form-label">insert amount</label>
                       <div class="input-group mb-3">
@@ -172,7 +149,7 @@ const RegisterProducts = () => {
               <div className='row'>
                   <div className='col-md-6'>
                       <a class="btn btn-dark" id={styles.bottomSpace} tipe="button" href="javascript:history.back()">Go back</a>
-                  </div>
+                  </div>  
                   <div className='col-md-6'>
                     <button className="btn btn-dark"  id={styles.bottomSpace} type="submit">Add products</button>
                   </div>
