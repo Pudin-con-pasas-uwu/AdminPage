@@ -8,6 +8,14 @@ const order_detail = (props) => {
     })
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const router = useRouter()
+
+    const sumPrice = orderDetailFilter.reduce((previus, current) => {
+        return previus + current.price * current.quantity;
+    }, '$');
+    const sumProducts = orderDetailFilter.reduce((previus, current) => {
+        return previus + current.quantity;
+    }, '');
+
     return (
 
         <div>
@@ -34,13 +42,13 @@ const order_detail = (props) => {
                                                 </div>
                                             </div>
                                         </div>
-                                    ))  : suma
+                                    ))  : null
                                 } 
                                 <hr />
                             </div>
                             <div className='container'>
                                 <div className="row">
-                                    <h3 id="orderDetail_total">Total({order_detail.quantity} Products): ${order_detail.price}</h3>
+                                    <h3 id="orderDetail_total">Total({sumProducts} Products): {sumPrice}</h3>
                                 </div>
                                 <button className="btn btn-dark" id="orderDetail_backButton" onClick={() => router.back()}>Go back</button>
                             </div>
