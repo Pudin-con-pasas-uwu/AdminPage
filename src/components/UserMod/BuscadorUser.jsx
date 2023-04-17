@@ -12,7 +12,7 @@ const BuscadorUser = ({ users, onSearch }) => {
 
   return (
     <div className="container">
-      <input type="search" value={query} onChange={handleInputChange} placeholder="Search..." className='form-control me-2 mb-1' id="UserSearchIN" />
+      <input type="search" value={query} onChange={handleInputChange} placeholder="Buscar..." className='form-control me-2 mb-1' id="UserSearchIN" />
     </div>
   );
 };

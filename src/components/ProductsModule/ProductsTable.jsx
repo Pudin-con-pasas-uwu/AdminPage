@@ -83,7 +83,7 @@ const ProductsTable = (props) => {
                       <Link href="/ProductsModule/ProductsAdd/ModuleProductsAdd" type="button" class="btn btn-dark" id={styles.buttonadd}>ADD</Link>
                     </th>
                 </tr>
-                <tr>
+                <tr  style={{ textAlign: "center" }}>
                     <th>#</th>
                     <th>image</th>
                     <th>category</th>
@@ -100,7 +100,7 @@ const ProductsTable = (props) => {
                                       {/* ////////////////////////////isArray//////////////////////////// */}
             {Array.isArray(props.users.rows) && props.users.rows.length > 0 ?
             sortedRows().map((user) => (
-                <tr key={user.id}>
+                <tr key={user.id}  style={{ textAlign: "center" }}>
                     <th>{user.id}</th>
                     <th id={styles.ContentImg}>
                     <img src={`/imgs/${user.id}.jpg` } class="img-fluid" alt="imagen del producto" id={styles.SiceImg}  />
