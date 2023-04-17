@@ -62,11 +62,11 @@ const ProductsTableEdit = () => {
                 <div className='container'>
                     <div className='row tuxteno'>
                         <div className='col-md-6'>
-                            <label className='form-label'>Product name</label>
+                            <label className='form-label'>nombre del producto</label>
                             <input type="text" className='form-control' name='product_name' value={form.product_name} onChange={handleChange} required/>
                         </div>
                         <div class="col-md-6">
-                            <label for="formFile" class="form-label">Select your image</label>
+                            <label for="formFile" class="form-label">selecciona la imagen</label>
                             <input class="form-control" type="file" name='image' id="formFile" value={form.image} onChange={handleChange} required/>
                         </div> 
                     </div>
@@ -93,14 +93,14 @@ const ProductsTableEdit = () => {
                             </div>
                         </div> */}
                         <div className='col-md-4'>
-                                <label for="formFile" class="form-label">insert amount</label>
+                                <label for="formFile" class="form-label">inserte stock</label>
                             <div class="input-group mb-3">
                                 <span class="input-group-text">Unid</span>
                                     <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" value={form.stock} onChange={handleChange} required />
                             </div>
                         </div>
                         <div className='col-md-4'>
-                        <label for="formFile" class="form-label">insert price</label>
+                        <label for="formFile" class="form-label">inserte precio</label>
                             <div class="input-group mb-3">
                                 <span class="input-group-text">$</span>
                                     <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)"  value={form.price} onChange={handleChange} required />
@@ -112,16 +112,16 @@ const ProductsTableEdit = () => {
                 <div className='container'>
                     <div className='row tuxteno'>
                         <div className='col-md-6'>
-                            <label for="formFile" class="form-label">insert a small description</label>
+                            <label for="formFile" class="form-label">inserte descripción corta</label>
                             <div class="input-group">
-                                <span class="input-group-text">With text area</span>
+                                <span class="input-group-text">area de texto</span>
                                 <textarea class="form-control" aria-label="With textarea" value={form.short_desc} onChange={handleChange} required ></textarea>
                             </div>
                         </div>
                         <div className='col-md-6'>
-                            <label for="formFile" class="form-label">insert product description</label>
+                            <label for="formFile" class="form-label">inserte descripción del producto</label>
                             <div class="input-group">
-                                <span class="input-group-text">With text area</span>
+                                <span class="input-group-text">area de texto</span>
                                 <textarea class="form-control" aria-label="With textarea" value={form.description} onChange={handleChange} required></textarea>
                             </div>
                         </div>
@@ -131,10 +131,10 @@ const ProductsTableEdit = () => {
                 <div class="container">
                     <div className='row'>
                         <div className='col-md-6'>
-                            <a class="btn btn-dark" id={styles.bottomSpace} tipe="button" href="javascript:history.back()">Go back</a>
+                            <a class="btn btn-dark" id={styles.bottomSpace} tipe="button" href="javascript:history.back()">Atras</a>
                         </div>
                             <div className='col-md-6'>
-                                <button type="submit" className="btn btn-danger" id={styles.bottomSpace} >{isLoading ? "Adding..." : "Add"}</button>
+                                <button type="submit" className="btn btn-danger" id={styles.bottomSpace} >{isLoading ? "Adding..." : "Añadir productos"}</button>
                             </div>
                     </div>
                 </div> 

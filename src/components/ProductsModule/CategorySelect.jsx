@@ -18,9 +18,9 @@ const CategorySelect = () => {
 return (
     <>
         <div className='col-md-4'>
-            <label for="formFile" class="form-label" >Select category</label>
+            <label for="formFile" class="form-label" >selecciona la categoria</label>
             <div class="input-group mb-3">
-                <label class="input-group-text" for="inputGroupSelect01">category</label>
+                <label class="input-group-text" for="inputGroupSelect01">categoria</label>
                     <select class="form-select" id="inputGroupSelect01" >
                     {categories.map(category => (
                     <option selected key={category.id}>
