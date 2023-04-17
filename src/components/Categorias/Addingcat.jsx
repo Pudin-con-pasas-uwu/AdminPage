@@ -42,9 +42,9 @@ const AddingCat = () => {
           className="d-flex flex-column align-items-center"
         >
           <div className="form-container alabel text-center">
-            <label>nombre de la categoría:</label>
+            <label>Nombre de la categoría:</label>
             <input
-              placeholder="New Category"
+              placeholder="nueva categoría"
               type="text"
               name="name"
               className="form-control"
@@ -56,7 +56,7 @@ const AddingCat = () => {
           <div className="form-container alabel text-center">
             <label>imagen:</label>
             <input
-              placeholder="Image URL"
+              placeholder="Nueva imagen"
               type="text"
               name="image"
               className="form-control"
