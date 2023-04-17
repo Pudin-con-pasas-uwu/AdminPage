@@ -80,7 +80,10 @@ const sortedRows = () => {
               </div>
               <div className="col-sm-12 col-md-4 my-2">
               {/* el boton de agregar */}
-              <button type="button" className="btn btn-dark" id="ordersMod_addButton">ADD</button>
+              <tn>
+              <Link href="/OrdersModule/orderadd/OrderAdd" type="button"  className="btn btn-dark" id="ordersMod_addButton">ADD</Link>
+              </tn>
+
 </div>
           </div>
               </div>
