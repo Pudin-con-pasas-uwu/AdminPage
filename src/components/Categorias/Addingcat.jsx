@@ -59,9 +59,9 @@ const AddingCat = () => {
           className="d-flex flex-column align-items-center"
         >
           <div className="form-container alabel text-center">
-            <label>Category Name:</label>
+            <label>Nombre de categoría:</label>
             <input
-              placeholder="New Category"
+              placeholder="Nueva categoría"
               type="text"
               name="name"
               className="form-control"
@@ -71,9 +71,9 @@ const AddingCat = () => {
             />
           </div>
           <div className="form-container alabel text-center">
-            <label>Category Image:</label>
+            <label>Imagen:</label>
             <input
-              placeholder="Image URL"
+              placeholder="URL de imagen"
               type="text"
               name="image"
               className="form-control"
@@ -92,7 +92,7 @@ const AddingCat = () => {
               id="bottomSpace"
               onClick={() => router.back()}
             >
-              Go back
+              Regresar
             </button>
           </div>
         </form>

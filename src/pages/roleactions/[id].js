@@ -17,7 +17,7 @@ const Roleedit = ({ rol }) => {
         <Layout>
           <main>
               <div className="container text-center">
-                <h3>Right now your are editing:</h3>
+                <h3>Ahora mismo estás editando:</h3>
                 <h2>{rol.name}</h2>
               </div>
               <Roladding/>

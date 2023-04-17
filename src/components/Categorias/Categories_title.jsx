@@ -3,7 +3,7 @@ import React from 'react';
 const CategoriesTitle = () => {
     return (
         <div className='container' id='titulo_roles'>
-            <h3>Categories</h3>
+            <h3>Categorías</h3>
         </div>
     );
 }

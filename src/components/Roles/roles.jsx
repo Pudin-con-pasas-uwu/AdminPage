@@ -74,7 +74,7 @@ const Roles = (props) => {
   <div className="row">
     <div className="col-sm-12 col-md-4 my-2">
       <form onSubmit={(event) => event.preventDefault()} >
-        <input id='ordenamiento' className="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+        <input id='ordenamiento' className="form-control me-2" type="search" placeholder="Búsqueda..." aria-label="Search"
             value={searchQuery}
             onChange={handleSearchQueryChange}
         />
@@ -82,15 +82,15 @@ const Roles = (props) => {
     </div>
     <div className="col-sm-12 col-md-4 my-2">
       <select value={sortOrder} onChange={handleSortChange} id='ordenamiento'  className="form-select form-select " >
-        <option value="">Sort by:</option>
+        <option value="">Ordenar por:</option>
         <option value="ascName">A-Z</option> 
         <option value="descName">Z-A</option>
-        <option value="descDate">Oldest</option>
-        <option value="ascDate">Newest</option>
+        <option value="descDate">Antiguo</option>
+        <option value="ascDate">Reciente</option>
       </select>
     </div>
     <div className="col-sm-12 col-md-4 my-2">
-      <Link href="Add_role" type="button" className="btn btn-dark" id="buttonadd">ADD</Link>
+      <Link href="Add_role" type="button" className="btn btn-dark" id="buttonadd">Agregar</Link>
     </div>
   </div>
 </div>
@@ -100,7 +100,7 @@ const Roles = (props) => {
           <thead>
             <tr className="text-center">
               <th>Rol</th>
-              <th>Actions</th>
+              <th>Acciones</th>
             </tr>
           </thead>
           <tbody>
@@ -111,11 +111,11 @@ const Roles = (props) => {
                     <td className="">
                     <Link href={`/roleactions/${rol.id}`} key={rol.id}>
                       <button type="button" className="btn btn-dark ActionSpace">
-                        Edit
+                        Editar
                       </button>  
                       </Link>
                       <button type="button" className="btn btn-danger ActionSpace" onClick={() => deleterole(rol.id)}  >
-                        Delete
+                        Eliminar
                       </button>{" "}
                     </td>
                   </tr>

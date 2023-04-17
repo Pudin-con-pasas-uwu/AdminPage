@@ -5,8 +5,8 @@ const AddRolHeader = () => {
         <div>
             <main>
                 <div className='container text-center'>
-                <h1>Add</h1>
-                <p>Please fill the fields to add a new rol</p>
+                <h1>Agregar</h1>
+                <p>Por favor, rellena los campos para agregar un rol nuevo</p>
                 </div>
             </main>
         </div>

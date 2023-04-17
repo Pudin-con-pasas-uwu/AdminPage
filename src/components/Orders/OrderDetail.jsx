@@ -25,7 +25,7 @@ const order_detail = (props) => {
 
                     <div key={order_detail.order_id}>
                         <div>
-                            <h3 id="orderDetail_tittle">Order Detail #{order_detail.order_id}</h3>
+                            <h3 id="orderDetail_tittle">Detalle de orden #{order_detail.order_id}</h3>
                         </div>
                             <div className='container'>
                                 {Array.isArray(orderDetailFilter) ?
@@ -37,8 +37,8 @@ const order_detail = (props) => {
                                                     <h3 id="orderDetail_productName">{order_detail.product_name}</h3>
                                                 </div>
                                                 <div className="col-lg-4" id>
-                                                    <p id="orderDetail_quantity" >Quantity: </p><span> {order_detail.quantity} unit(s)</span><br />
-                                                    <p id="orderDetail_price">Price: </p><span> ${order_detail.price}.MNX</span>
+                                                    <p id="orderDetail_quantity" >Cantidad: </p><span> {order_detail.quantity} unidad(es)</span><br />
+                                                    <p id="orderDetail_price">Precio: </p><span> ${order_detail.price}.MNX</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -48,9 +48,9 @@ const order_detail = (props) => {
                             </div>
                             <div className='container'>
                                 <div className="row">
-                                    <h3 id="orderDetail_total">Total({sumProducts} Products): {sumPrice}</h3>
+                                    <h3 id="orderDetail_total">Total({sumProducts} Productos): {sumPrice}</h3>
                                 </div>
-                                <button className="btn btn-dark" id="orderDetail_backButton" onClick={() => router.back()}>Go back</button>
+                                <button className="btn btn-dark" id="orderDetail_backButton" onClick={() => router.back()}>Regresar</button>
                             </div>
                     </div>
                 ))
