@@ -1,102 +1,77 @@
-import { useRouter } from "next/router";
-import { useState } from "react";
-
+import { useState } from 'react';
+import axios from 'axios';
+import { useRouter } from 'next/router';
 const AddingCat = () => {
   const router = useRouter();
 
-  const [form, setForm] = useState({
-    name: "",
-    image: "",
-    creation_date: new Date().toISOString().substring(0, 10),
-  });
+  //el useState es la variable de estado que se puede actualizar, suele estar vacio, ya que el usuario lo rellena con los inputs
+  const [name, setName] = useState('');
+  const [image, setImage] = useState('');
+  const [creation_date, ] = useState(new Date().toLocaleString('en-US', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }));
 
-  const [isLoading, setIsLoading] = useState(false);
-
-  const handleChange = (e) => {
-    const { value, name } = e.target;
-    setForm((prevForm) => ({ ...prevForm, [name]: value }));
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    if (isLoading) {
-      return;
-    }
-
-    setIsLoading(true);
-
+  //aqui se conecta a la api
+  const handleSubmit = async (event) => {
+    event.preventDefault();
     try {
       const token = localStorage.getItem('adminToken');
-      const options = {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(form),
-      };
-      const res = await fetch(
-        "https://ecommerunid.sistemasdelcaribe.com/insert_categorie",
-        options
+      const response = await axios.post(
+        'https://ecommerunid.sistemasdelcaribe.com/insert_categorie',
+        { name, image, creation_date },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          }
+        }
       );
-      const data = await res.json();
-      console.log(data);
-      // Aquí puedes agregar código para mostrar una notificación de éxito o redirigir al usuario a otra página.
+      console.log(response.data);
     } catch (error) {
-      console.log(error);
-      // Aquí puedes agregar código para mostrar una notificación de error al usuario.
-    } finally {
-      setIsLoading(false);
+      console.error(error);
     }
   };
-
+  
   return (
     <main>
-      <div className="container">
+       <div className="container">
         <form
           onSubmit={handleSubmit}
           className="d-flex flex-column align-items-center"
         >
           <div className="form-container alabel text-center">
-            <label>Nombre de categoría:</label>
+            <label>nombre de la categoría:</label>
             <input
-              placeholder="Nueva categoría"
+              placeholder="New Category"
               type="text"
               name="name"
               className="form-control"
-              value={form.name}
-              onChange={handleChange}
+              value={name}
+              onChange={event=>setName(event.target.value)}
               required
             />
           </div>
           <div className="form-container alabel text-center">
-            <label>Imagen:</label>
+            <label>imagen:</label>
             <input
-              placeholder="URL de imagen"
+              placeholder="Image URL"
               type="text"
               name="image"
               className="form-control"
-              value={form.image}
-              onChange={handleChange}
+              value={image}
+              onChange={event=>setImage(event.target.value)}
               required
             />
           </div>
           <div className="container boton_añadir">
-            <button type="submit" className="btn btn-danger" id="bottomSpace">
-              {isLoading ? "Adding..." : "Add"}
-            </button>
-            <button
-              type="button"
-              className="btn btn-dark"
-              id="bottomSpace"
-              onClick={() => router.back()}
-            >
-              Regresar
-            </button>
+            <button type="submit" className="btn btn-danger" id="bottomSpace">Add</button>
+            <button type="button" className="btn btn-dark" id="bottomSpace" onClick={() => router.back()}>Go back</button>
           </div>
         </form>
       </div>
+
     </main>
   );
 };
