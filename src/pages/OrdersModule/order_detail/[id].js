@@ -22,7 +22,7 @@ const order_detail = (props) => {
 
   const fetchUsers = async () => {
     try {
-      const res = await fetch('https://ecommerunid.sistemasdelcaribe.com/all_users');
+      const res = await fetch('https://ecommerunid.sistemasdelcaribe.com/all_order_details');
       const data = await res.json();
       setUsers(data);
     } catch (error) {
@@ -37,7 +37,7 @@ const order_detail = (props) => {
   return (
 
     <Layout>
-        <OrderDetail  order_detail={props.order_detail} order_id={id}/>
+        <OrderDetail  order_detail={props.order_detail} order_id={id} users={users}/>
     </Layout>
   )
   

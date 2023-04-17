@@ -2,7 +2,8 @@ import Layout from '../../../components/Layouts/Layout.jsx'
 // Importamos el hook useRouter para poder obtener el id del query string de la URL
 import { useRouter } from "next/router";
 import fetch from 'isomorphic-fetch'
-import ProductsTableEdit from '../../../components/ProductsModule/ProductsTableEdit.jsx'; 
+import ProductsTableEdit from '../../../components/ProductsModule/ProductsTableEdit.jsx';
+import { useState,useEffect } from 'react';
 
 const DetaillProducts = ({ user }) => {
     console.log(user)
@@ -10,6 +11,33 @@ const DetaillProducts = ({ user }) => {
     const router = useRouter();
     console.log(router)
     const { id } = router.query;
+
+    //ruta protegida
+    
+    const [users, setUsers] = useState(null);
+
+  useEffect(() => {
+    const token = localStorage.getItem('adminToken');
+    if (!token) {
+      router.push('/');
+    } else {
+      fetchUsers();
+    }
+  }, [router]);
+
+  const fetchUsers = async () => {
+    try {
+      const res = await fetch('https://ecommerunid.sistemasdelcaribe.com/all_products');
+      const data = await res.json();
+      setUsers(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+    if (!users) {
+      return null;
+    }
 
     if (!user) {  //aqui ya no se usa el props
         router.reload();
@@ -19,7 +47,7 @@ const DetaillProducts = ({ user }) => {
     return (
         // Renderizamos el componente Layout
         <Layout>
-          <center>
+          <center users={users}>
             <div>
               <div className="container checktitle">
                 <h1>Edit:</h1>
