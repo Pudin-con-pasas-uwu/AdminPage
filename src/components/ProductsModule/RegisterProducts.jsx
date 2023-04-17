@@ -13,7 +13,7 @@ const fechaActual = (`${year}-${month}-${day}`);
 const RegisterProducts = () => {
 
 //   aqui es donde se manda a llamar el token
-  // const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2ODExNzIyNTcsImRhdGEiOiIxIn0.TUuXhlOxdAF1wxFdMZfjD3Uk6coXo46jv3FkrakTwgo";
+  const token = "token";
   
   const router = useRouter();
 
@@ -71,14 +71,15 @@ const RegisterProducts = () => {
     try {
       const options = {
         method: "POST",
-        //aqui van los headers con el token de autorizacion 
-        // headers: {
-        //   'Content-Type': 'application/json',
-        //   'Authorization': `Bearer ${token}`
-        // },
+        // aqui van los headers con el token de autorizacion 
+        headers: 
+        {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
         body: JSON.stringify(form),
       };
-      const res = await fetch("https://ecommerce-unid.000webhostapp.com/products", options);
+      const res = await fetch("https://ecommerunid.sistemasdelcaribe.com/all_products", options);
       const data = await res.json();
       console.log(data);
     } catch (error) {

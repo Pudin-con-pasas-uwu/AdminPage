@@ -103,7 +103,8 @@ const ProductsTable = (props) => {
                 <tr key={user.id}>
                     <th>{user.id}</th>
                     <th id={styles.ContentImg}>
-                      <Image src={Ejemplo} class="img-fluid" alt="imagen del producto" id={styles.SiceImg} /> 
+                    <img src={`/imgs/${user.id}.jpg` } class="img-fluid" alt="imagen del producto" id={styles.SiceImg}  />
+                      {/* <Image src={Ejemplo} class="img-fluid" alt="imagen del producto" id={styles.SiceImg} />  */}
                     </th>
                     
                                       {/* ////////////////////////////categorias////////////////////////////  */}
@@ -130,8 +131,11 @@ const ProductsTable = (props) => {
                     <td>{user.creation_date}</td>
                     <td>
                         {/* <Link href={`/ProductsModule/ProductsEdit/${user.id} `} type="button" class="btn btn-danger" id={styles.bottomSpace}>delete</Link> */}
-                        <button type="button" class="btn btn-danger"  id={styles.bottomSpace} onClick={() => deleteData(user.id)}>delete</button>
-                        <Link href={`/ProductsModule/ProductsEdit/${user.id} `} type="button" class="btn btn-dark" id={styles.bottomSpace}>edit</Link>
+                        <button type="button" class="btn btn-danger"  id={styles.bottomSpace} onClick={() => deleteData(user.id)}>Delete</button>
+                        {/* <Link href={`/ProductsModule/ProductsEdit/${user.id} `} type="button" class="btn btn-dark" id={styles.bottomSpace}>editar</Link> */}
+                        <Link href={`/ProductsModule/ProductsEdit/${user.id}`} key={user.id}>
+                          <button type="button" class="btn btn-dark" id={styles.bottomSpace}>Edit</button>  
+                        </Link>
                     </td>
                 </tr>
             )) : null
@@ -145,7 +149,7 @@ const ProductsTable = (props) => {
 
 const deleteData = async(id) => {
   try {
-    await fetch(`https://ecommerce-unid.000webhostapp.com/products/${id}`, {
+    await fetch(`https://ecommerunid.sistemasdelcaribe.com/all_products/${id}`, {
       method: 'DELETE'
     })
   } catch (error) {

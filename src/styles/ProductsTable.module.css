@@ -3,10 +3,11 @@
     width: calc(100% - 75px);
 }
 #bottomSpace{
-    width: 82px;
+    width: 90px;
     margin-left: 1px;
     margin-bottom: 1px;
     border-radius: 0%;
+    
 }
 #buttonadd{
     border-radius: 0%;

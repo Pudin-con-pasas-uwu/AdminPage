@@ -22,7 +22,8 @@ const DetaillProducts = ({ user }) => {
           <center>
             <div>
               <div className="container checktitle">
-                <h1>Edit</h1>
+                <h1>Edit:</h1>
+                <h1>{user.product_name}</h1>
                 <p>Please enter the changes</p>
               </div>
             </div>
@@ -35,7 +36,7 @@ const DetaillProducts = ({ user }) => {
 DetaillProducts.getInitialProps = async (ctx) => {
     try {
         // Hacemos una petición al API para obtener los detalles del producto con el id especificado en el query string de la URL
-        const res = await fetch(`https://ecommerce-unid.000webhostapp.com/products/${ctx.query.id}`)
+        const res = await fetch(`https://ecommerunid.sistemasdelcaribe.com/one_product/${ctx.query.id}`)
         const resJSON = await res.json();
         // Retornamos los detalles del producto como props
         return { user: resJSON }
