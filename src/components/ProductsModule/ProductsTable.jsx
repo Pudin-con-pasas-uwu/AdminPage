@@ -1,8 +1,6 @@
 import styles from '../../styles/ProductsTable.module.css';
 import Link from "next/link"; 
 import { useState } from 'react';
-import Image from "next/image";
-import Ejemplo from "../../img/Ejemplo.jpg";
 
 const ProductsTable = (props) => {
     // console.log(props.users.rows)
@@ -64,7 +62,7 @@ const ProductsTable = (props) => {
                 <tr>
                     <th colspan="6">
                         <form onSubmit={(event) => event.preventDefault()} >
-                            <input id='ordenamiento' class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+                            <input id='ordenamiento' class="form-control me-2" type="search" placeholder="Buscar:" aria-label="Search"
                                 value={searchQuery}
                                 onChange={handleSearchQueryChange}
                             />
@@ -72,27 +70,27 @@ const ProductsTable = (props) => {
                     </th>          
                     <th colspan="3">
                         <select value={sortOrder} onChange={handleSortChange} id='ordenamiento'  class="form-select form-select " >
-                        <option value="">Sort by:</option>
+                        <option value="">Ordenar por:</option>
                     <option value="ascName">A-Z</option> 
                     <option value="descName">Z-A</option>
-                    <option value="descDate">Oldest</option>
-                    <option value="ascDate">Newest</option>
+                    <option value="descDate">Más antiguo</option>
+                    <option value="ascDate">Más nuevo</option>
                         </select>
                     </th>
                     <th colspan="2">
-                      <Link href="/ProductsModule/ProductsAdd/ModuleProductsAdd" type="button" class="btn btn-dark" id={styles.buttonadd}>ADD</Link>
+                      <Link href="/ProductsModule/ProductsAdd/ModuleProductsAdd" type="button" class="btn btn-dark" id={styles.buttonadd}>Añadir</Link>
                     </th>
                 </tr>
                 <tr  style={{ textAlign: "center" }}>
                     <th>#</th>
-                    <th>image</th>
-                    <th>category</th>
-                    <th>product name</th>
-                    <th>price</th>
+                    <th>imagen</th>
+                    <th>categorias</th>
+                    <th>nombre del producto</th>
+                    <th>precio</th>
                     <th>stock</th>
-                    <th>short description</th>
-                    <th>description</th>
-                    <th>date creation</th>
+                    <th>descripción corta</th>
+                    <th>descripción</th>
+                    <th>fecha de creacion</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -130,11 +128,9 @@ const ProductsTable = (props) => {
                     <td id={styles.TextRecortDescription} >{user.description}</td>
                     <td>{user.creation_date}</td>
                     <td>
-                        {/* <Link href={`/ProductsModule/ProductsEdit/${user.id} `} type="button" class="btn btn-danger" id={styles.bottomSpace}>delete</Link> */}
-                        <button type="button" class="btn btn-danger"  id={styles.bottomSpace} onClick={() => deleteData(user.id)}>Delete</button>
-                        {/* <Link href={`/ProductsModule/ProductsEdit/${user.id} `} type="button" class="btn btn-dark" id={styles.bottomSpace}>editar</Link> */}
+                        <button type="button" class="btn btn-danger"  id={styles.bottomSpace} onClick={() => deleteData(user.id)}>eliminar</button>
                         <Link href={`/ProductsModule/ProductsEdit/${user.id}`} key={user.id}>
-                          <button type="button" class="btn btn-dark" id={styles.bottomSpace}>Edit</button>  
+                          <button type="button" class="btn btn-dark" id={styles.bottomSpace}>Editar</button>  
                         </Link>
                     </td>
                 </tr>

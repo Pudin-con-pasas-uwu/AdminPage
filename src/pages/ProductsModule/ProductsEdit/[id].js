@@ -22,9 +22,9 @@ const DetaillProducts = ({ user }) => {
           <center>
             <div>
               <div className="container checktitle">
-                <h1>Edit:</h1>
+                <h1>Editar:</h1>
                 <h1>{user.product_name}</h1>
-                <p>Please enter the changes</p>
+                <p>Por favor ingrese los cambios</p>
               </div>
             </div>
           </center>

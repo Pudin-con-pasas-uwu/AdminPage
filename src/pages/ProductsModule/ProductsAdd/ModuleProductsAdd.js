@@ -17,8 +17,8 @@ const ModuleProductsAdd = () =>{
           <center>
             <div>
               <div className="container checktitle">
-                <h1>Add</h1>
-                <p>Please fill in the fields to add a new product</p>
+                <h1>Añadir</h1>
+                <p>Por favor complete los campos para agregar un nuevo producto</p>
               </div>
             </div>
           </center>
