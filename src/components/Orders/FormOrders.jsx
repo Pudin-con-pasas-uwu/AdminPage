@@ -6,9 +6,13 @@ import OrderAdd from "@/pages/OrdersModule/orderadd/OrderAdd";
 
 
 const FormOrders = (props) =>{
+
     const [precio, setMessage] = useState('');
     const [updated, setUpdated] = useState(precio);
     
+    const elselect =  () => {
+     
+    }
 
     const router = useRouter()
    function handleChange(event){
@@ -19,6 +23,7 @@ const FormOrders = (props) =>{
     var numero= event.target.value
      var total = precio * numero;       
     setUpdated(total);
+
 }
    
     return(
@@ -65,13 +70,19 @@ const FormOrders = (props) =>{
                  </div>
                 <div>
                     <label htmlFor="" className="la" id={styles.la} >Order status</label>
-                    <input type="text" placeholder="Status" className="in" id={styles.in} />
+                    <select type="text" placeholder="Status" className="in" id={styles.in} onChange={ elselect }>
+                    
+                        <option selected>Active select 1/Inactive select 0</option>
+                        <option value="uno">0</option>
+                        <option value="uno">1</option>
+        </select>
+                    
                 </div>
                 
             </form>
             <div>
                 <button class="btn2 btn-dark add_rol" className="btn2" id={styles.btn2} onClick={() => router.back()}>Go back</button>
-                <button class="btn2 btn-dark add_rol" className="btn2" id={styles.btn2}>Add</button>
+                <button class="btn2 btn-dark add_rol" className="btn2" id={styles.btn2} type="submit">Add</button>
             </div>
         </div>
     )
