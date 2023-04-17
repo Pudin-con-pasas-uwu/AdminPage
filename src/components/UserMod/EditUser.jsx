@@ -78,7 +78,7 @@ const EditUser = (props) => {
     className="form-control"
     id="name"
     value={user ? user.name : ""}
-    onChange={(event) => setUser({ ...user, name: event.target.value })}    />
+    onChange={handleUsernameChange}    />
    </div>
 
   <div className="col-6">
