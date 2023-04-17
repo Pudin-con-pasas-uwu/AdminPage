@@ -48,7 +48,7 @@ const sortedRows = () => {
       const options = {
         method: 'DELETE'
       }
-      await fetch(`https://ecommerunid.sistemasdelcaribe.com/delete_order_detail/${id}`, options)
+      await fetch(`https://ecommerunid.sistemasdelcaribe.com/delete_order/${id}`, options)
     } catch (error) {
       console.log(error)
     }
