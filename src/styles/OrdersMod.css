@@ -13,7 +13,10 @@
     justify-content: center;
 }
 .ordersMod_optionButton{
-    width: 82px;
+    width: 95px;
+}
+.orderTableResponsive{
+    overflow-x: auto;
 }
 @media screen and (max-width: 913px) {
     #ordersMod_addButton{
@@ -24,7 +27,6 @@
     #ordersMod_table{
         margin-top: 20px;
         justify-content: center;
-        font-size: 10px;
     }
     .ordersMod_optionButton{
         margin-bottom: 5px;

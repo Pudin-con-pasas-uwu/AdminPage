@@ -58,45 +58,44 @@ const sortedRows = () => {
         
         <div>
             <div>
-                <h3 id="ordersMod_tittle" >Orders</h3>
+                <h3 id="ordersMod_tittle" >Órdenes</h3>
             </div>
             <div className="container">
           <div className='row'>
 <div className="col-sm-12 col-md-4 my-2">
               {/* buscador */}
               <form onSubmit={(event) => event.preventDefault()}>
-                <input className="form-control" type="search" value={searchQuery} onChange={handleSearchQueryChange} placeholder="Search"/>
+                <input className="form-control" type="search" value={searchQuery} onChange={handleSearchQueryChange} placeholder="Búsqueda..."/>
               </form>
               </div>
               <div className="col-sm-12 col-md-4 my-2">
               {/* ordenadores */}
               <select value={sortOrder} onChange={handleSortChange} className="form-select">
-                <option value="">Sort by:</option>
+                <option value="">Ordernar por:</option>
                 <option value="ascName">A-Z</option>
                 <option value="descName">Z-A</option>
-                <option value="descDate">Oldest</option>
-                <option value="ascDate">Newest</option>
+                <option value="descDate">Antiguo</option>
+                <option value="ascDate">Reciente</option>
               </select>
               </div>
               <div className="col-sm-12 col-md-4 my-2">
               {/* el boton de agregar */}
               <tn>
-              <Link href="/OrdersModule/orderadd/OrderAdd" type="button"  className="btn btn-dark" id="ordersMod_addButton">ADD</Link>
+              <Link href="/OrdersModule/orderadd/OrderAdd" type="button"  className="btn btn-dark" id="ordersMod_addButton">Agregar</Link>
               </tn>
-
 </div>
           </div>
               </div>
-              <div className="container">
+              <div className="container orderTableResponsive">
                 <table className="table table-striped table-hover table-responsive" id="ordersMod_table">
 
                     <thead>
                         <tr>
                             <th className='text-center'>ID</th>
-                            <th className='text-center'>User</th>
-                            <th className='text-center'>Total Amount</th>
-                            <th className='text-center'>Creation Date</th>
-                            <th className='text-center'>Order status</th>
+                            <th className='text-center'>Usuario</th>
+                            <th className='text-center'>Precio total</th>
+                            <th className='text-center'>Fecha de creación</th>
+                            <th className='text-center'>Estado</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -109,7 +108,11 @@ const sortedRows = () => {
                                 <td className='text-center'>${order.total_amount}.MNX</td>
                                 <td className='text-center'>{order.creation_date}</td>
                                 <td className='text-center'>{order.order_status}</td>
-                                <th ><Link type="button" className="btn btn-dark bordered ordersMod_optionButton" href={`order_detail/${order.id}`}>Detail </Link> <Link type="button" className="btn btn-dark bordered ordersMod_optionButton" href={`order_update/${order.id}`}>Edit</Link> <button type="button" className="btn btn-danger bordered ordersMod_optionButton" onClick={() => deleteOrder(order.id)}>Delete</button> </th>
+                                <th ><Link 
+                                type="button" className="btn btn-dark bordered ordersMod_optionButton" href={`order_detail/${order.id}`}>Detalles
+                                </Link> <Link 
+                                type="button" className="btn btn-dark bordered ordersMod_optionButton" href={`order_update/${order.id}`}>Editar
+                                </Link> <button type="button" className="btn btn-danger bordered ordersMod_optionButton" onClick={() => deleteOrder(order.id)}>Eliminar</button> </th>
                             </tr>
                             
                             )): null

@@ -57,12 +57,12 @@ const Roladding = () => {
       <div className="container">
         <form onSubmit={handleSubmit} className="d-flex flex-column align-items-center">
           <div className="form-container alabel">
-          <label>Rol Name:</label>
-          <input placeholder="The new rol" type="text" name="name" className="form-control" value={form.name} onChange={handleChange} required />
+          <label>Nombre del rol:</label>
+          <input placeholder="Nuevo rol" type="text" name="name" className="form-control" value={form.name} onChange={handleChange} required />
           </div>
           <div className="container boton_añadir">
-            <button type="submit" className="btn btn-danger" id="bottomSpace">Add</button>
-            <button type="button" className="btn btn-dark" id="bottomSpace" onClick={() => router.back()}>Go back</button>
+            <button type="submit" className="btn btn-danger" id="bottomSpace">Agregar</button>
+            <button type="button" className="btn btn-dark" id="bottomSpace" onClick={() => router.back()}>Regresar</button>
           </div>
         </form>
       </div>
