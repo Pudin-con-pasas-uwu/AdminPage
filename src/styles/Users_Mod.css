@@ -7,13 +7,18 @@
     width: 135px;
 }
 .BT_ED_EL{
-    border-radius: 0;
     margin: 4px;
+    border-radius: 0;
 }
-.table-containerUsers{
-    overflow-x: auto;
-}
+
 #PaddingTopTable {
     margin: auto;
     width: calc(100% - 75px);
+}
+@media screen and (max-width: 820px) {
+    .AgregarBT{
+        margin: auto;
+        display: flex;
+        justify-content: center;
+    }
 }

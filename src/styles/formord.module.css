@@ -1,8 +1,8 @@
 /*Formulario */
 
 #Formulario{
-    width: 92%;
-    margin-left: 3.8%;
+    width: 100%;
+    /* margin-left: 3.8%; */
     padding: 5%;
   }
   
@@ -10,11 +10,10 @@
   #Form1{
       margin-top: 15px;
       font-size: 15px;
-      background-color: rgb(248, 248, 248);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-gap: 25px;
+      display: flex;
+      /* grid-template-columns: 1fr 1fr; */
       border-radius: 5px;
+      margin-bottom: 30px;
   
   }
   #la{
@@ -40,30 +39,19 @@
     background-color: rgb(249, 201, 209);
   }
   #btn2{
-    margin-top: 20px;
-    padding: 1%;
-    width: 49%;
-    border-radius: 5px;
-    border: none;
     color: white;
-    background-color: black;
-    transition: all ease 0.5s;
-    margin-left: 10px;
+  margin: 4px;
   }
   
   #btn2:hover{
     background-color: #b2000b;
   }
   #tit1{
-    font-weight: bolder;
-    font-size: 25px;
-    margin-left: 45%;
+text-align: center;
   }
   #control{
   border-color: black;
   }
   #sub{
-    font-weight: bolder;
-    font-size: 20px;
-    margin-left: 35%;
+margin-bottom: 50px;
   }

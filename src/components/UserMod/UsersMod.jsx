@@ -43,7 +43,7 @@ function handleSort(option) {
     }
 
     const handleDelete = async (id) => {
-        const confirmDelete = window.confirm("Are you sure you want to delete this user?");
+        const confirmDelete = window.confirm("¿Estás seguro que quieres eliminar este usuario?");
         if(confirmDelete) {
         try {
           const options = {
@@ -55,8 +55,7 @@ function handleSort(option) {
         }
       }
     }
-      
-  
+
 return (
     <main>
         <div className='container'>
@@ -66,31 +65,32 @@ return (
         </div>
         <div className="col-sm-12 col-md-4 my-2">
         <select value={sortOption} onChange={(e) => handleSort(e.target.value)} className="form-select mb-1" id="SortUser">
-        <option value="">Sort by:</option>
+        <option value="">Ordenar por:</option>
         <option value="nameAsc">A-Z</option>
         <option value="nameDesc">Z-A</option>
-        <option value="dateAsc">Oldest</option>
-        <option value="dateDesc">Newest</option>
+        <option value="dateAsc">Antiguo</option>
+        <option value="dateDesc">Reciente</option>
         </select>
         </div>
         <div className="col-sm-12 col-md-4 my-2">
-       <Link href="/UsersModule/UsersADD" className="AgregarBT btn btn-dark mb-1">ADD</Link>
+       <Link href="/UsersModule/UsersADD" className="AgregarBT btn btn-dark mb-1">Agregar</Link>
         </div>
         </div>
         </div>
     <div className="table-responsive-xxl">        
     <table className="table table-striped table-hover table-sm" id="PaddingTopTable" >
         <thead>
-        <tr>
+        <tr style={{ textAlign: "center" }}>
                 <th>ID</th>
-                <th>Name</th>
-                <th>Last name</th>
-                <th>Username</th>
-                <th>Email</th>
-                <th>Role</th>
-                <th>Number</th>
-                <th>Birthdate</th>
-                <th>Status</th>
+                <th>Nombre</th>
+                <th>Apellidos</th>
+                <th>Usuario</th>
+                <th>Correo</th>
+                <th>Rol</th>
+                <th>Número</th>
+                <th>Nacimiento</th>
+                <th>Estado</th>
+                <th >Acciones</th>
             </tr>
             </thead>
             <tbody>
@@ -102,7 +102,7 @@ return (
        </tr>
        ) : (
     UsersFiltro.map((user) => (
-        <tr key={user.id}>
+        <tr key={user.id}  style={{ textAlign: "center" }}>
                     <td>{user.id}</td>
                     <td>{user.name}</td>
                     <td>{user.last_name}</td>
@@ -119,9 +119,9 @@ return (
                      user.status.toString() === '1' ? 'Activo' :''}</td>
                     <td id="sizer">
                    <div className="btn-group">
-                   <Link href="/UsersModule/UsersEdit" className="btn btn-dark BT_ED_EL">Edit</Link>
+                   <Link href={`/UsersModule/UsersEdit?id=${user.id}`} className="btn btn-dark BT_ED_EL">Editar</Link>
                    <button type="button" className="btn btn-danger BT_ED_EL" onClick={() => handleDelete(user.id)}>
-                    Delete
+                    Eliminar
                    </button>
 
                   </div>         

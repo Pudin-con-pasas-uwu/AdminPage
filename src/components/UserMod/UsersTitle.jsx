@@ -4,7 +4,7 @@ const UsersTitle = () => {
     return (
         <div>
 <div className="container" id='titulo_users'>
-                <h3>Users</h3>
+                <h3>Usuarios</h3>
             </div>
         </div>
     );

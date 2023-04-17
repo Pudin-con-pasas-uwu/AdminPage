@@ -7,8 +7,8 @@ const UsersADD = () => {
 <Layout>
           <center>
               <div className="container">
-                <h1>Add</h1>
-                <p>Please fill in the fields to add a new user</p><br/>
+                <h1>Agregar</h1>
+                <p>Rellene el formulario para añadir un nuevo usuario</p><br/>
               </div>
           </center>
         <FormUser />
